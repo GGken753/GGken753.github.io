@@ -14,17 +14,17 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="XFF漏洞（X-Forwarded-For）•什么是XFF漏洞*XFF是header请求头中的一个参数 是用来识别通过HTTP代理或负载均衡方式连接到Web服务器的客户端最原始的IP地址的HTTP请求头字段。 代表了HTTP的请求端真实的IP。 12X-Forwarded-For: client1, proxy1, proxy2, proxy3&#x2F;&#x2F;浏览器IP，第一个代理服务器，">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="c:/Users/ggken/AppData/Roaming/Typora/typora-user-images/image-20201120104642871.png">
-<meta property="og:image" content="c:/Users/ggken/AppData/Roaming/Typora/typora-user-images/image-20201120105133282.png">
-<meta property="og:image" content="c:/Users/ggken/AppData/Roaming/Typora/typora-user-images/image-20201120135131233.png">
-<meta property="og:image" content="c:/Users/ggken/AppData/Roaming/Typora/typora-user-images/image-20201120143138948.png">
-<meta property="og:image" content="c:/Users/ggken/AppData/Roaming/Typora/typora-user-images/image-20201120215420079.png">
-<meta property="og:image" content="c:/Users/ggken/AppData/Roaming/Typora/typora-user-images/image-20201120215444639.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201120104642871.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201120105133282.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201120135131233.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201120142653285.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201120215420079.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201120215444639.png">
 <meta property="article:published_time" content="2020-11-17T14:26:56.017Z">
-<meta property="article:modified_time" content="2020-11-21T12:34:34.118Z">
+<meta property="article:modified_time" content="2020-11-24T06:58:37.630Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="c:/Users/ggken/AppData/Roaming/Typora/typora-user-images/image-20201120104642871.png">
+<meta name="twitter:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201120104642871.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -108,9 +108,9 @@
 <h5 id="3-其他服务器真实地址的参数"><a href="#3-其他服务器真实地址的参数" class="headerlink" title="3.其他服务器真实地址的参数"></a>3.其他服务器真实地址的参数</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">x-forwarded-fot</span><br><span class="line">x-remote-IP</span><br><span class="line">x-originating-IP</span><br><span class="line">x-remote-ip</span><br><span class="line">x-remote-addr</span><br><span class="line">x-client-IP</span><br><span class="line">x-client-ip</span><br><span class="line">x-Real-ip</span><br></pre></td></tr></table></figure>
 
 <h5 id="4-例题"><a href="#4-例题" class="headerlink" title="4.例题"></a>4.例题</h5><p><a target="_blank" rel="noopener" href="http://47.98.234.232:28017/">http://47.98.234.232:28017/</a></p>
-<p><img src="C:\Users\ggken\AppData\Roaming\Typora\typora-user-images\image-20201120104642871.png" alt="image-20201120104642871"></p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201120104642871.png"></p>
 <p>用Burp Suite抓包 将use=0改为use=1;写入X-Forwarded-For对http进行绕过，得到flag</p>
-<p><img src="C:\Users\ggken\AppData\Roaming\Typora\typora-user-images\image-20201120105133282.png" alt="image-20201120105133282"></p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201120105133282.png"></p>
 <h2 id="XXF-XML-External-Entity-injection-XML-外部实体注入漏洞）"><a href="#XXF-XML-External-Entity-injection-XML-外部实体注入漏洞）" class="headerlink" title="XXF((XML External Entity injection)XML 外部实体注入漏洞）"></a>XXF((XML External Entity injection)XML 外部实体注入漏洞）</h2><h3 id="•什么是XXF漏洞"><a href="#•什么是XXF漏洞" class="headerlink" title="•什么是XXF漏洞"></a>•什么是XXF漏洞</h3><p>​        *如果XML 文件在引用外部实体时候，可以沟通构造恶意内容，可以导致读取任意文件，命令执行和对内网的攻击，这就是XXE漏洞</p>
 <h3 id="•XML"><a href="#•XML" class="headerlink" title="•XML"></a>•XML</h3><h5 id="1-XML概念："><a href="#1-XML概念：" class="headerlink" title="1.XML概念："></a>1.<strong>XML概念：</strong></h5><p>​         XML是可扩展的标记语言（eXtensible Markup Language），设计用来进行数据的传输和存储， 结构是树形结构，有标签构成，这点很想HTML语言。但是XML和HTML有明显区别如下：<br>XML 被设计用来传输和存储数据。<br>HTML 被设计用来显示数据。</p>
 <h5 id="2-XML结构"><a href="#2-XML结构" class="headerlink" title="2.XML结构:"></a>2.XML结构:</h5><p>​        来看一个简单的XML 文件结构， 第一行XML的声明，第二行<note> 为根元素， 下面的to, from,heading和body 都是子元素，构成了一个出色的自我描述性的结构：</p>
@@ -145,11 +145,11 @@
 
 <h5 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h5><p>134.175.168.213:28100</p>
 <p>查看页面源码</p>
-<p><img src="C:\Users\ggken\AppData\Roaming\Typora\typora-user-images\image-20201120135131233.png" alt="image-20201120135131233"></p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201120135131233.png"></p>
 <p>发现存在index.php文件</p>
 <p>使用php伪协议读取index.php </p>
 <p>使用Burp Suite进行抓包</p>
-<p><img src="C:\Users\ggken\AppData\Roaming\Typora\typora-user-images\image-20201120143138948.png" alt="image-20201120143138948"></p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201120142653285.png"></p>
 <p>得到</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PD9waHANCmxpYnhtbF9kaXNhYmxlX2VudGl0eV9sb2FkZXIoZmFsc2UpOw0KJGRhdGEgPSBAZmlsZV9nZXRfY29udGVudHMoJ3BocDovL2lucHV0Jyk7DQokcmVzcCA9ICcnOw0KLy8kZmxhZz0nZmxhZ3s3OWQxMDYyNi1kMjdmLTQ1NjktYTYyOS1jOTYwNmQwMzc4ZjJ9JzsNCmlmKCRkYXRhICE9IGZhbHNlKXsNCiAgICAkZG9tID0gbmV3IERPTURvY3VtZW50KCk7DQogICAgJGRvbS0+bG9hZFhNTCgkZGF0YSwgTElCWE1MX05PRU5UKTsNCiAgICBvYl9zdGFydCgpOw0KICAgICRyZXMgID0gJGRvbS0+dGV4dENvbnRlbnQ7DQogICAgJHJlc3AgPSBvYl9nZXRfY29udGVudHMoKTsNCiAgICBvYl9lbmRfY2xlYW4oKTsNCiAgICBpZiAoJHJlcyl7DQogICAgICAgIGRpZSgkcmVzKTsNCiAgICB9DQoNCn0NCj8+DQo8IURPQ1RZUEUgaHRtbD4NCjxodG1sIGxhbmc9ImVuIj4NCjxoZWFkPg0KICAgIDxtZXRhIGNoYXJzZXQ9IlVURi04Ij4NCiAgICA8dGl0bGU+d2VsY29tZTwvdGl0bGU+DQogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSIuL3N0eWxlLmNzcyI+DQogICAgPG1ldGEgbmFtZT0idmlld3BvcnQiIGNvbnRlbnQ9IndpZHRoPWRldmljZS13aWR0aCwgaW5pdGlhbC1zY2FsZT0xLjAiPg0KICAgIDxtZXRhIGh0dHAtZXF1aXY9IlgtVUEtQ29tcGF0aWJsZSIgY29udGVudD0iaWU9ZWRnZSI+DQoNCjwvaGVhZD4NCjxib2R5IGNsYXNzPSJjb250YWN0Qm9keSI+DQo8ZGl2IGNsYXNzPSJ3cmFwcGVyIj4NCiAgICA8ZGl2IGNsYXNzPSJ0aXRsZSI+DQoNCg0KICAgIDwvZGl2Pg0KDQoNCiAgICA8Zm9ybSBtZXRob2Q9InBvc3QiIGNsYXNzPSJmb3JtIj4NCiAgICAgICAgPGgxIGlkPSJ0aXRsZSI+6K+36L6T5YWl5aeT5ZCNPC9oMT4NCiAgICAgICAgPGJyLz4NCiAgICAgICAgPGJyLz4NCiAgICAgICAgPGJyLz4NCiAgICAgICAgPGlucHV0IHR5cGU9InRleHQiIGNsYXNzPSJuYW1lIGVudHJ5ICIgaWQ9Im5hbWUiIG5hbWU9Im5hbWUiIHBsYWNlaG9sZGVyPSJZb3VyIE5hbWUiLz4NCiAgICA8L2Zvcm0+DQogICAgPGJ1dHRvbiBjbGFzcz0ic3VibWl0IGVudHJ5IiBvbmNsaWNrPSJmdW5jKCkiPlN1Ym1pdDwvYnV0dG9uPg0KDQogICAgPGRpdiBjbGFzcz0ic2hhZG93Ij48L2Rpdj4NCjwvZGl2Pg0KDQo8L2JvZHk+DQo8L2h0bWw+DQo8c2NyaXB0IHR5cGU9InRleHQvamF2YXNjcmlwdCI+DQogICAgZnVuY3Rpb24gcGxheSgpIHsNCiAgICAgICAgcmV0dXJuIGZhbHNlOw0KICAgIH0NCiAgICBmdW5jdGlvbiBmdW5jKCkgew0KICAgICAgICAvLyBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgpLnZhbHVlDQogICAgICAgIHZhciB4bWwgPSAnJyArDQogICAgICAgICAgICAnPFw&#x2F;eG1sIHZlcnNpb249IjEuMCIgZW5jb2Rpbmc9IlVURi04Ilw&#x2F;PicgKw0KICAgICAgICAgICAgJzxmZWVkYmFjaz4nICsNCiAgICAgICAgICAgICc8YXV0aG9yPicgKyBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnbmFtZScpLnZhbHVlKyAnPC9hdXRob3I+JyArDQogICAgICAgICAgICAnPC9mZWVkYmFjaz4nOw0KICAgICAgICBjb25zb2xlLmxvZyh4bWwpOw0KICAgICAgICB2YXIgeG1saHR0cCA9IG5ldyBYTUxIdHRwUmVxdWVzdCgpOw0KICAgICAgICB4bWxodHRwLm9ucmVhZHlzdGF0ZWNoYW5nZSA9IGZ1bmN0aW9uICgpIHsNCiAgICAgICAgICAgIGlmICh4bWxodHRwLnJlYWR5U3RhdGUgPT0gNCkgew0KICAgICAgICAgICAgICAgIC8vIGNvbnNvbGUubG9nKHhtbGh0dHAucmVhZHlTdGF0ZSk7DQogICAgICAgICAgICAgICAgLy8gY29uc29sZS5sb2coeG1saHR0cC5yZXNwb25zZVRleHQpOw0KICAgICAgICAgICAgICAgIHZhciByZXMgPSB4bWxodHRwLnJlc3BvbnNlVGV4dDsNCiAgICAgICAgICAgICAgICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgndGl0bGUnKS50ZXh0Q29udGVudCA9IHJlcw0KICAgICAgICAgICAgfQ0KICAgICAgICB9Ow0KICAgICAgICB4bWxodHRwLm9wZW4oIlBPU1QiLCAiaW5kZXgucGhwIiwgdHJ1ZSk7DQogICAgICAgIHhtbGh0dHAuc2VuZCh4bWwpOw0KICAgICAgICByZXR1cm4gZmFsc2U7DQogICAgfTsNCjwvc2NyaXB0Pg0KPC9ib2R5Pg0KPC9odG1sPg&#x3D;&#x3D;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
@@ -182,8 +182,8 @@
 <h3 id="•绕过协议"><a href="#•绕过协议" class="headerlink" title="•绕过协议"></a>•绕过协议</h3><h5 id="1-ip地址转换绕过"><a href="#1-ip地址转换绕过" class="headerlink" title="1.ip地址转换绕过"></a>1.ip地址转换绕过</h5><p>192.168.0.1</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(1)、8进制格式：0300.0250.0.1</span><br><span class="line">(2)、16进制格式：0xC0.0xA8.0.1</span><br><span class="line">(3)、10进制整数格式：3232235521</span><br><span class="line">(4)、16进制整数格式：0xC0A80001</span><br></pre></td></tr></table></figure>
 
-<h5 id="2-短网址绕过"><a href="#2-短网址绕过" class="headerlink" title="2.短网址绕过"></a>2.短网址绕过</h5><p><img src="C:\Users\ggken\AppData\Roaming\Typora\typora-user-images\image-20201120215420079.png" alt="image-20201120215420079"></p>
-<p><img src="C:\Users\ggken\AppData\Roaming\Typora\typora-user-images\image-20201120215444639.png" alt="image-20201120215444639"></p>
+<h5 id="2-短网址绕过"><a href="#2-短网址绕过" class="headerlink" title="2.短网址绕过"></a>2.短网址绕过</h5><p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201120215420079.png"></p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201120215444639.png"></p>
 <p>​     即<a target="_blank" rel="noopener" href="http://www.baidu.com与http//x8r.cn/uhOYzn">www.baidu.com与http://x8r.cn/uhOYzn</a> 是一样的</p>
 <h5 id="3-gopher协议"><a href="#3-gopher协议" class="headerlink" title="3.gopher协议"></a>3.gopher协议</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">格式：URL:gopher:&#x2F;&#x2F;&lt;host&gt;:&lt;port&gt;&#x2F;&lt;gopher-path&gt;_后接TCP数据流</span><br></pre></td></tr></table></figure>
 
@@ -254,6 +254,10 @@
       <ul>
         
           <li>
+            <a href="/2020/11/25/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B07/">MISC解题思路</a>
+          </li>
+        
+          <li>
             <a href="/2020/11/19/%E6%B5%B7%E5%95%B8%E6%9D%AFwp/">海啸杯wp</a>
           </li>
         
@@ -267,10 +271,6 @@
         
           <li>
             <a href="/2020/11/10/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B04/">正则提取</a>
-          </li>
-        
-          <li>
-            <a href="/2020/10/29/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03/">python基础</a>
           </li>
         
       </ul>
