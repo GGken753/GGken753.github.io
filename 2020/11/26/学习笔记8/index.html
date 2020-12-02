@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="90道MISC部分wpbw-图片隐写-641.首先将安装包解压，发现是一个gif,但打不开。猜想：是不是文件的格式出现了问题  2.将文件使用010软件打开，发现文件开头十六进制为  对比正确的gif的开头标志 147 49 46 38 39 61  发现头文件格式错误，因此给他加上，在编译文本给它加上GIF89,保存  得到一个gif  3.接下来使用gif分帧找到小黄人出现的坐标 116">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://ggken753.github.io/2020/11/26/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B08/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="90道MISC部分wpbw-图片隐写-641.首先将安装包解压，发现是一个gif,但打不开。猜想：是不是文件的格式出现了问题  2.将文件使用010软件打开，发现文件开头十六进制为  对比正确的gif的开头标志 147 49 46 38 39 61  发现头文件格式错误，因此给他加上，在编译文本给它加上GIF89,保存  得到一个gif  3.接下来使用gif分帧找到小黄人出现的坐标 116">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201126203907900.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201126204147474.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201126204458751.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201126205200092.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201127231030601.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201127231050937.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201127231449902.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201127231356497.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201127231655958.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201127231833072.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201127232138312.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201127234429341.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201127234826345.png">
+<meta property="og:image" content="c:/Users/ggken/Desktop/0707.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201128000237976.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201128000619629.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201128003451828.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201128003551689.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201128100440622.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201128105419671.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201128105754215.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201128110132688.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201128110400349.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201128110604614.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201128110702183.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201128110904109.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201129102218308.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201129102417671.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201129133753436.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201129133837760.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201129133947628.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201129135038004.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201129135230957.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201129140915713.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201129141310449.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201201212402443.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201201212643786.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201201212816503.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201201163137910.png">
+<meta property="article:published_time" content="2020-11-26T12:34:09.711Z">
+<meta property="article:modified_time" content="2020-12-02T06:51:46.636Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201126203907900.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://GGken753.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-学习笔记8" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/26/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B08/" class="article-date">
+  <time datetime="2020-11-26T12:34:09.711Z" itemprop="datePublished">2020-11-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<hr>
+<h2 id="90道MISC部分wp"><a href="#90道MISC部分wp" class="headerlink" title="90道MISC部分wp"></a>90道MISC部分wp</h2><h4 id="bw-图片隐写-64"><a href="#bw-图片隐写-64" class="headerlink" title="bw-图片隐写-64"></a>bw-图片隐写-64</h4><p>1.首先将安装包解压，发现是一个gif,但打不开。猜想：是不是文件的格式出现了问题</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201126203907900.png"></p>
+<p>2.将文件使用010软件打开，发现文件开头十六进制为</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201126204147474.png"></p>
+<p>对比正确的gif的开头标志</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">47 49 46 38 39 61</span><br></pre></td></tr></table></figure>
+
+<p>发现头文件格式错误，因此给他加上，在编译文本给它加上GIF89,保存</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201126204458751.png"></p>
+<p>得到一个gif</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201126205200092.png"></p>
+<p>3.接下来使用gif分帧找到小黄人出现的坐标</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">16 53 17 6 30 54 5 34 24 53 61 36 25 22 25 31 25 55 52</span><br></pre></td></tr></table></figure>
+
+<p>在64进制表上进行匹配</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Q1RGe2FiY19kZWfZ30</span><br></pre></td></tr></table></figure>
+
+<p>使用base64解码得到</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CTF&#123;abc_degٟ</span><br></pre></td></tr></table></figure>
+
+<h4 id="bw-图片隐写-爱因斯坦"><a href="#bw-图片隐写-爱因斯坦" class="headerlink" title="bw-图片隐写-爱因斯坦"></a>bw-图片隐写-爱因斯坦</h4><p>1.将解压得到的misc2.jpg放入kail binwalk分离</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201127231030601.png"></p>
+<p>得到一个包</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201127231050937.png"></p>
+<p>解压得到另一个包</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201127231449902.png"></p>
+<p>发现这个包解压需要密码，猜测为伪密码</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201127231356497.png"></p>
+<p>然后对一开始的图片进行分析，查看属性</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201127231655958.png"></p>
+<p>将这个输进去试试，得到flag.txt—-flag</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201127231833072.png"></p>
+<h4 id="bw-图片隐写-0707"><a href="#bw-图片隐写-0707" class="headerlink" title="bw-图片隐写-0707"></a>bw-图片隐写-0707</h4><p>猜想：隐藏图片高度</p>
+<p>1.解压放进010查看，看见这个照片是iphone5拍的</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201127232138312.png"></p>
+<p>2.查看iphone5的后置摄像头为<strong>3264*2448</strong></p>
+<p>而这个摄像头为<strong>3264*1681</strong>确实是隐藏了高度，改一下数据</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201127234429341.png"></p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201127234826345.png"></p>
+<p>得到flag</p>
+<p><img src="C:\Users\ggken\Desktop\0707.png" alt="0707"></p>
+<h4 id="bw-图片隐写-二维码"><a href="#bw-图片隐写-二维码" class="headerlink" title="bw-图片隐写-二维码"></a>bw-图片隐写-二维码</h4><p>得到一个二维码，扫进去是secret is here</p>
+<p>1.放进binwalk去，得到一个安装包</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201128000237976.png"></p>
+<p>在放进010</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201128000619629.png"></p>
+<p>发现有一个文件，打开需要密码，用fcrackzip爆破</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fcrackzip -b -ca -l 1-4 -u 压缩文件</span><br></pre></td></tr></table></figure>
+
+<p>-b 暴力破解模式 -c 指定掩码类型（a=a-z;1=0-9;!=特殊字符） -l 密码长度 -u 压缩文件名</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201128003451828.png"></p>
+<p>输入7639得到flag</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201128003551689.png"></p>
+<h4 id="bw-图片隐写-five"><a href="#bw-图片隐写-five" class="headerlink" title="bw-图片隐写-five"></a>bw-图片隐写-five</h4><p>1.解压得到一个图片，用010看发现还存在一张图</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201128100440622.png"></p>
+<p>需要密码才能打开</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201128105419671.png"></p>
+<p>用图片名称1111110000000000进行16进制转换得到FC00</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201128105754215.png"></p>
+<p>打开后得到一个图片</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201128110132688.png"></p>
+<p>2.用010打开这个照片，得到一个php语句，将它拿去base64解码</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201128110400349.png"></p>
+<p>得到遗传莫斯密码</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201128110604614.png"></p>
+<p>拿去解码</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201128110702183.png"></p>
+<p>得到一串</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">7a57a5a743894a0e </span><br></pre></td></tr></table></figure>
+
+<p>用MD5解码得到flag</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201128110904109.png"></p>
+<h4 id="bw-图片隐写-fruit"><a href="#bw-图片隐写-fruit" class="headerlink" title="bw-图片隐写-fruit"></a>bw-图片隐写-fruit</h4><p>1.解压把图片放进stegsolve,按方向不断切换得到一个二维码</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201129102218308.png"></p>
+<p>2.扫码得到</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201129102417671.png"></p>
+<p>3.将数字转换成ASCII码后得到字符串</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-.-. - ..-. .-.. ... -... ..--.- -... ... .-..</span><br></pre></td></tr></table></figure>
+
+<p>4.通过解莫斯密码，得到</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CTFLSB_BSL</span><br></pre></td></tr></table></figure>
+
+<h4 id="bw-图片隐写-snake"><a href="#bw-图片隐写-snake" class="headerlink" title="bw-图片隐写-snake"></a>bw-图片隐写-snake</h4><p>1.将snake.jpg用010打开发现不是图片不是以FF D9结尾的。</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201129133753436.png"></p>
+<p>2.拉进binwalk进行分离，得到两个文件</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201129133837760.png"></p>
+<p>3.在key中发现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">V2hhdCBpcyBOaWNraSBNaW5haidzIGZhdm9yaXRlIHNvbmcgdGhhdCByZWZlcnMgdG8gc25ha2VzPwo&#x3D;</span><br></pre></td></tr></table></figure>
+
+<p>进行base64解码，得到</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201129133947628.png"></p>
+<p>查看NiKi Minaj’的信息</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201129135038004.png"></p>
+<p>4.cipher文件是加密的文件，用工具<a target="_blank" rel="noopener" href="http://serpent.online-domain-tools.com/%EF%BC%8C%E8%A7%A3%E7%A0%81%E5%BE%97%E5%88%B0flag">http://serpent.online-domain-tools.com/，解码得到flag</a></p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201129135230957.png"></p>
+<h4 id="bw-图片隐写-paint"><a href="#bw-图片隐写-paint" class="headerlink" title="bw-图片隐写-paint"></a>bw-图片隐写-paint</h4><p>1.解压文件是一个坐标文件，用gnuplot画图，得到二维码</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201129140915713.png"></p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201129141310449.png"></p>
+<h4 id="bw-图片隐写-教练我想打ctf"><a href="#bw-图片隐写-教练我想打ctf" class="headerlink" title="bw-图片隐写-教练我想打ctf"></a>bw-图片隐写-教练我想打ctf</h4><p>1.将图片放进stegSolve</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201201212402443.png"></p>
+<p>save bin保存到桌面，并进行改后缀为 flag.zip</p>
+<p>2.将保存的装包放进kail</p>
+<p>用binwalk 分离得到文件 1</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201201212643786.png"></p>
+<p>3.用010打开发现</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201201212816503.png"></p>
+<h4 id="bw-图片隐写-九连环"><a href="#bw-图片隐写-九连环" class="headerlink" title="bw-图片隐写-九连环"></a>bw-图片隐写-九连环</h4><p>工具：steghide</p>
+<p>使用方法：</p>
+<p>*隐藏文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. steghide embed -cf [图片文件载体] -ef [待隐藏文件]</span><br><span class="line">2. [回车]</span><br><span class="line">3. 输入密码，提取文件时用到，如果不想设密码，直接按回车</span><br><span class="line">4. [ENTER]</span><br></pre></td></tr></table></figure>
+
+<p>*使用以下命令显示隐藏在文件中的信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">steghide info 文件名</span><br></pre></td></tr></table></figure>
+
+<p>*提取隐藏的文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">steghide extract -sf 文件名</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201201163137910.png"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://ggken753.github.io/2020/11/26/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B08/" data-id="cki71zk5k0000k0v3ecai4cyc" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/11/25/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B07/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">MISC解题思路</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/11/26/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B08/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/25/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B07/">MISC解题思路</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/19/%E6%B5%B7%E5%95%B8%E6%9D%AFwp/">海啸杯wp</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/17/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B06/">漏洞</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/15/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B05/">SQL注入</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
