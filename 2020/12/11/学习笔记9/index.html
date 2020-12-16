@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>linux一些小知识 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1.安装docker出错的一些笔记：1.安装好centos 7 后，对yumj进行更新 1sudo yum update   报错，提示 1There are no enabled repos  2.然后使用语句查看repos 1yum repolist all    发现repolist 为0； 、、、、、、、、、 尝试过换源，安装163源、阿里源都有报错无果……. 2. 分析centos 7">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux一些小知识">
+<meta property="og:url" content="http://ggken753.github.io/2020/12/11/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B09/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1.安装docker出错的一些笔记：1.安装好centos 7 后，对yumj进行更新 1sudo yum update   报错，提示 1There are no enabled repos  2.然后使用语句查看repos 1yum repolist all    发现repolist 为0； 、、、、、、、、、 尝试过换源，安装163源、阿里源都有报错无果……. 2. 分析centos 7">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/efb8664c05220263345c1906b50abb7.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/0055eac519718b074dad9f8298d2c52.png">
+<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/584b937be048ed4981e07ac7e35e30b.png">
+<meta property="article:published_time" content="2020-12-11T07:34:04.393Z">
+<meta property="article:modified_time" content="2020-12-16T05:09:27.300Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/efb8664c05220263345c1906b50abb7.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://GGken753.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-学习笔记9" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/12/11/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B09/" class="article-date">
+  <time datetime="2020-12-11T07:34:04.393Z" itemprop="datePublished">2020-12-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      linux一些小知识
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-安装docker出错的一些笔记："><a href="#1-安装docker出错的一些笔记：" class="headerlink" title="1.安装docker出错的一些笔记："></a>1.安装docker出错的一些笔记：</h3><p>1.安装好centos 7 后，对yumj进行更新</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum update</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/efb8664c05220263345c1906b50abb7.png"></p>
+<p>报错，提示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">There are no enabled repos</span><br></pre></td></tr></table></figure>
+
+<p>2.然后使用语句查看repos</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum repolist all</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/0055eac519718b074dad9f8298d2c52.png"></p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/584b937be048ed4981e07ac7e35e30b.png"></p>
+<p>发现repolist 为0；</p>
+<p>、、、、、、、、、</p>
+<p>尝试过换源，安装163源、阿里源都有报错无果…….</p>
+<h3 id="2-分析centos-7-系统里面的文件"><a href="#2-分析centos-7-系统里面的文件" class="headerlink" title="2. 分析centos 7 系统里面的文件"></a>2. 分析centos 7 系统里面的文件</h3><p><strong>Linux根目录”/“下各个系统文件夹的含义和用途</strong></p>
+<p>1、/boot 该目录默认下存放的是Linux的启动文件和内核。</p>
+<p>2、/initrd 它的英文含义是boot loader initialized RAM disk,就是由boot  loader初始化的内存盘。在linux内核启动前，boot  loader会将存储介质(一般是硬盘)中的initrd文件加载到内存，内核启动时会在访问真正的根文件系统前先访问该内存中的initrd文件系统。</p>
+<p>3、/bin 该目录中存放Linux的常用命令。</p>
+<p>4、/sbin 该目录用来存放系统管理员使用的管理程序。</p>
+<p>5、/var 该目录存放那些经常被修改的文件，包括各种日志、数据文件。</p>
+<p>6、/etc 该目录存放系统管理时要用到的各种配置文件和子目录，例如网络配置文件、文件系统、X系统配置文件、设备配置信息、设置用户信息等。</p>
+<p>7、/dev 该目录包含了Linux系统中使用的所有外部设备，它实际上是访问这些外部设备的端口，访问这些外部设备与访问一个文件或一个目录没有区别。</p>
+<p>8、/mnt 临时将别的文件系统挂在该目录下。</p>
+<p>9、/root 如果你是以超级用户的身份登录的，这个就是超级用户的主目录。</p>
+<p>10、/home 如果建立一个名为“xx”的用户，那么在/home目录下就有一个对应的“/home/xx”路径，用来存放该用户的主目录。</p>
+<p>11、/usr 用户的应用程序和文件几乎都存放在该目录下。</p>
+<p>12、/lib 该目录用来存放系统动态链接共享库，几乎所有的应用程序都会用到该目录下的共享库。</p>
+<p>13、/opt 第三方软件在安装时默认会找这个目录,所以你没有安装此类软件时它是空的,但如果你一旦把它删除了,以后在安装此类软件时就有可能碰到麻烦。</p>
+<p>14、/tmp 用来存放不同程序执行时产生的临时文件，该目录会被系统自动清理干净。</p>
+<p>15、/proc 可以在该目录下获取系统信息，这些信息是在内存中由系统自己产生的，该目录的内容不在硬盘上而在内存里。</p>
+<p>16、/misc 可以让多用户堆积和临时转移自己的文件。</p>
+<p>17、/lost＋found 该目录在大多数情况下都是空的。但当突然停电、或者非正常关机后，有些文件就临时存放在这里。</p>
+<p>18、文件颜色的含义：蓝色为文件夹；绿色是可执行文件；浅蓝色是链接文件；红框文件是加了SUID位，任意限权；红色为压缩文件；褐色为设备文件。</p>
+<p>1、bin： 包含常用的Linux用户命令，例如，ls、sort、date和chmod。</p>
+<p>2、/boot： 包含可引导的Linux内核和引导装载（boot loader）配置文件（GRUB）。</p>
+<p>3、/dev： 包含代表系统设备访问点的文件。这包括终端设备（tty*)、软盘（fd<em>）、硬盘（hd</em>）、RAM（ram<em>）和CD-ROM（cd</em>）（用户通常通过设备文件直接访问这些设备）。</p>
+<p>4、/etc：包含管理配置文件。</p>
+<p>5、/home： 包含分配给每个拥有登陆帐号用户的目录。</p>
+<p>6、/media：提供挂载（mounting）和自动挂载设备的标准位置，如远程文件系统和可移动介质（目录名为cdrecorder、floppy等）。</p>
+<p>7、/mnt： 在被标准的/media目录替代前，这是很多设备常用的挂载点。某些可引导的Linux系统仍旧使用该目录来挂载硬盘分区和远程文件系统。</p>
+<p>8、/proc：包含有关系统资源的信息。</p>
+<p>9、/root：表示根用户的主目录。</p>
+<p>10、/sbin：包含管理命令和守护进程。</p>
+<p>11、/sys：一个类似与/proc的文件系统，在Linux2.6内核中最新出现的，包含的文件用于获得硬件状态并反映内核看到的系统设备树。它使用了/proc中的很多帮助。</p>
+<p>12、/tmp：包含应用程序使用的临时文件。</p>
+<p>13、/usr：包含用户文档、游戏、图形文件（X11）、库（lib），以及各种其他用户和管理命令及文件</p>
+<p>14、/var：包含不同应用程序使用的数据目录。特别要注意的是，这里放置作为FTP服务器（/var/ftp）成Web服务器（/var/www）共享文件。它还包含所有系统日志文件（/var/log）。</p>
+<h3 id="3-chmod命令"><a href="#3-chmod命令" class="headerlink" title="3. chmod命令"></a>3. chmod命令</h3><p>当文件设有权限时，可以使用chmod命令来获得权限、</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 -R &#x2F;etc</span><br></pre></td></tr></table></figure>
+
+<p>设置Filename下所有文件权限<br>chmod -R 777 fileName<br>指令名称 : chmod<br>使用权限 : 所有使用者<br>使用方式 : chmod [-cfvR] [–help] [–version] mode file…<br>说明 : Linux/Unix 的档案调用权限分为三级 : 档案拥有者、群组、其他。利用 chmod 可以藉以控制档案如何被他人所调用。<br>参数 :<br>mode : 权限设定字串，格式如下 : [ugoa…][[+-=][rwxX]…][,…]，其中<br>u 表示该档案的拥有者，g 表示与该档案的拥有者属于同一个群体(group)者，o 表示其他以外的人，a 表示这三者皆是。<br>+ 表示增加权限、- 表示取消权限、= 表示唯一设定权限。<br>r 表示可读取，w 表示可写入，x 表示可执行，X 表示只有当该档案是个子目录或者该档案已经被设定过为可执行。<br>-c : 若该档案权限确实已经更改，才显示其更改动作<br>-f : 若该档案权限无法被更改也不要显示错误讯息<br>-v : 显示权限变更的详细资料<br>-R : 对目前目录下的所有档案与子目录进行相同的权限变更(即以递回的方式逐个变更)<br>–help : 显示辅助说明<br>–version : 显示版本<br>范例 :将档案 file1.txt 设为所有人皆可读取 :<br>chmod ugo+r file1.txt<br>将档案 file1.txt 设为所有人皆可读取 :<br>chmod a+r file1.txt<br>将档案 file1.txt 与 file2.txt 设为该档案拥有者，与其所属同一个群体者可写入，但其他以外的人则不可写入 :<br>chmod ug+w,o-w file1.txt file2.txt<br>将 ex1.py 设定为只有该档案拥有者可以执行 :<br>chmod u+x ex1.py<br>将目前目录下的所有档案与子目录皆设为任何人可读取 :<br>chmod -R a+r *<br>此外chmod也可以用数字来表示权限如 chmod 777 file<br>语法为：chmod abc file<br>其中a,b,c各为一个数字，分别表示User、Group、及Other的权限。<br>r=4，w=2，x=1<br>若要rwx属性则4+2+1=7；<br>若要rw-属性则4+2=6；<br>若要r-x属性则4+1=7。<br>范例：<br>chmod a=rwx file<br>和<br>chmod 777 file<br>效果相同<br>chmod ug=rwx,o=x file<br>和<br>chmod 771 file<br>效果相同<br>若用chmod 4755 filename可使此程序具有root的权限.<br>指令名称 : chown<br>使用权限 : root</p>
+<p>使用方式 : chmod [-cfhvR] [–help] [–version] user[] file…</p>
+<p>说 明 : Linux/Unix 是多人多工作业系统，所有的档案皆有拥有者。利用 chown  可以将档案的拥有者加以改变。一般来说，这个指令只有是由  系统管理者(root)所使用，一般使用者没有权限可以改变别人的档案拥有者，也没有权限可以自己的档案拥有者改设为别人。只有系统管理者(root)才 有这样的权限。</p>
+<p>把计 :</p>
+<p>user : 新的档案拥有者的使用者 IDgroup : 新的档案拥有者的使用者群 体(group)-c :  若该档案拥有者确实已经更改，才显示其更改动作-f : 若该档案拥有者无法被更改也不要显示错误讯息-h : 只对于连结  (link)进行变更，而非该 link 真正指向的档案-v : 显示拥有者变更的详细资料-R : 对目前目录下的所有档案与子目录进行相同的拥有者 变更(即以递回的方式逐个变更)–help : 显示辅助说明–version : 显示版本</p>
+<p>范例 :<br>将档案 file1.txt 的拥有者设为 users 群体的使用者 jessie :<br>chown jessie:users file1.txt</p>
+<p>将目前目录下的所有档案与子目录的拥有者皆设为 users 群体的使用者 lamport :<br>chmod -R lamport:users *<br>-rw——- (600) – 只有属主有读写权限。<br>-rw-r–r– (644) – 只有属主有读写权限；而属组用户和其他用户只有读权限。<br>-rwx—— (700) – 只有属主有读、写、执行权限。<br>-rwxr-xr-x (755) – 属主有读、写、执行权限；而属组用户和其他用户只有读、执行权限。<br>-rwx–x–x (711) – 属主有读、写、执行权限；而属组用户和其他用户只有执行权限。<br>-rw-rw-rw- (666) – 所有用户都有文件读、写权限。这种做法不可取。<br>-rwxrwxrwx (777) – 所有用户都有读、写、执行权限。更不可取的做法。<br>以下是对目录的两个普通设定:</p>
+<p>drwx—— (700) - 只有属主可在目录中读、写。</p>
+<h3 id="4-drwxr-xr-x-755-所有用户可读该目录，但只有属主才能改变目录中的内容。"><a href="#4-drwxr-xr-x-755-所有用户可读该目录，但只有属主才能改变目录中的内容。" class="headerlink" title="4.drwxr-xr-x (755) - 所有用户可读该目录，但只有属主才能改变目录中的内容。"></a>4.drwxr-xr-x (755) - 所有用户可读该目录，但只有属主才能改变目录中的内容。</h3><p>运行 .sh 文件类型的文件：<br>用file命令测试一下看是什么类型的<br>file xxxx.sh<br>如果是Bourne-Again shell script 可以sh xxxx.sh 或者chmod +x xxxx.sh 再./xxx.sh<br>一般 .sh 的直接添加x(可执行属性) chmod +x xxx.sh 然后./xxx.sh就可以了</p>
+<h3 id="5-chmod是一个改变用户拥有指定文件的权限的命令-r-只读-w-写-x执行-也可以用数字"><a href="#5-chmod是一个改变用户拥有指定文件的权限的命令-r-只读-w-写-x执行-也可以用数字" class="headerlink" title="5.chmod是一个改变用户拥有指定文件的权限的命令.r:只读,w:写,x执行.也可以用数字"></a>5.chmod是一个改变用户拥有指定文件的权限的命令.r:只读,w:写,x执行.也可以用数字</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://ggken753.github.io/2020/12/11/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B09/" data-id="ckiqyhpc00001uov35yl9278k" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/12/15/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B010/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/11/26/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B08/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">90道MISC部分</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/12/15/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B010/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/12/11/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B09/">linux一些小知识</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/26/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B08/">90道MISC部分</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/25/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B07/">MISC解题思路</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/19/%E6%B5%B7%E5%95%B8%E6%9D%AFwp/">海啸杯wp</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
