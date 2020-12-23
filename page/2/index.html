@@ -64,6 +64,73 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-学习笔记2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/28/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02/" class="article-date">
+  <time datetime="2020-10-28T14:24:28.000Z" itemprop="datePublished">2020-10-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/28/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02/">python爬虫笔记(二)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>. （ggken原创）</p>
+<p>一． 得到一个指定的url的网页内容</p>
+<p>（1）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">def askURL(url)</span><br><span class="line">  head&#x3D;&#123;    </span><br><span class="line">“User-Agent: Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64; rv:81.0) Gecko&#x2F;20100101 Firefox&#x2F;81.0”</span><br><span class="line">request &#x3D;urllib.request.Request (url,headers&#x3D;head)</span><br><span class="line">html&#x3D;’”</span><br><span class="line">try :  </span><br><span class="line">Response &#x3D;urllib.request.urlopen(request)</span><br><span class="line">html &#x3D;response.read().decode(“utf-8”)</span><br><span class="line">print(“html”)</span><br><span class="line">except:urllib.error.URLError as e:</span><br><span class="line">If hasattr(e,”code”):</span><br><span class="line">print(e.code)</span><br><span class="line">If hasattr(e,”reason”):</span><br><span class="line">print(e.reason)</span><br></pre></td></tr></table></figure>
+
+<p>head :#模拟浏览器信息，向服务器发送消息</p>
+<p>User-Agent:#用户代理，表示告诉服务器，我们是什么类型的机器、浏览器（本质上是告诉浏览器，我们是可以接受什么水平的文件内容</p>
+<p>if hasattr（） :如果出错，显示出错的字符以及错误的原因</p>
+<p>（2）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"># -*- codeing &#x3D; utf-8 -*-</span><br><span class="line"># @Time : 2020&#x2F;10&#x2F;14 22:08</span><br><span class="line"># @Author : ggken</span><br><span class="line"># @File : 爬虫.py</span><br><span class="line"># @Software : PyCharm</span><br><span class="line">#import bs4   #网页解析，获取数据</span><br><span class="line">import xlwt    #进行excel操作</span><br><span class="line">import re    #正则表达式，进行文字匹配</span><br><span class="line">import urllib.request,urllib.error   #制定URL，获取网页数据</span><br><span class="line">import sqlite3  #进行sqlite数据库操作</span><br><span class="line">from bs4 import BeautifulSoup   #引入模块</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    baseurl &#x3D;&quot;https:&#x2F;&#x2F;movie.douban.com&#x2F;top250?start&#x3D;&quot;</span><br><span class="line">    datalist&#x3D;getData(baseurl)</span><br><span class="line">    savepath &#x3D;&quot;.\\豆瓣250.xls&quot;</span><br><span class="line">    #saveData(savepath)</span><br><span class="line"></span><br><span class="line">    askURL(&quot;https:&#x2F;&#x2F;movie.douban.com&#x2F;top250?start&#x3D;0&quot;)</span><br><span class="line">#爬取网页</span><br><span class="line">def getData(baseurl):</span><br><span class="line">    datalist&#x3D;[]</span><br><span class="line">    for i in range(0, 10):    #调用获取页面信息的函数 10次</span><br><span class="line">        url &#x3D; baseurl + str(i * 25)</span><br><span class="line">        html &#x3D; askURL(url)  #保存获取到的网页源码</span><br><span class="line"></span><br><span class="line">    return  datalist</span><br><span class="line"></span><br><span class="line">#得到指定一个url的网页内容</span><br><span class="line">def askURL(url):</span><br><span class="line"></span><br><span class="line">   head &#x3D;&#123;      #模拟浏览器头部信息，向豆瓣服务器发送信息</span><br><span class="line">    &quot;User-Agent&quot;: &quot;Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64; rv:82.0) Gecko&#x2F;20100101 Firefox&#x2F;82.0&quot;&#125;</span><br><span class="line">     #用户代理，表示告诉豆瓣服务器，我们是什么类型的机器，浏览器（本质上是告诉浏览器我们可以接受什么水平的文件内容）</span><br><span class="line">   request &#x3D; urllib.request.Request(url,headers&#x3D;head)</span><br><span class="line">   html &#x3D; &quot;&quot;</span><br><span class="line">   try:</span><br><span class="line">       response &#x3D; urllib.request.urlopen(request)</span><br><span class="line">       html &#x3D; response.read().decode(&quot;utf-8&quot;)</span><br><span class="line">       print(html)</span><br><span class="line">   except urllib.error.URLError as e:</span><br><span class="line">       if hasattr(e,&quot;code&quot;):</span><br><span class="line">           print(e.code)</span><br><span class="line">       if hasattr(e,&quot;reason&quot;):</span><br><span class="line">           print(e.reason)</span><br><span class="line">   return html</span><br><span class="line">#保存数据</span><br><span class="line">def saveData(savepath):</span><br><span class="line">   print(&quot;save...&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__&#x3D;&#x3D;&quot;__main__&quot;:   #当程序执行时</span><br><span class="line">#调用函数</span><br><span class="line">     main()</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/9952000382b98300b6d65541c54a709.png"></p>
+<p>（3）使用 bs4 中的beautifulsoup</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"># -*- codeing &#x3D; utf-8 -*-</span><br><span class="line"># @Time : 2020&#x2F;10&#x2F;27 16:58</span><br><span class="line"># @Author : ggken</span><br><span class="line"># @File : testBS4.py</span><br><span class="line"># @Software : PyCharm</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">file&#x3D; open(&quot;网页&quot;,&quot;rb&quot;)</span><br><span class="line">html &#x3D;file.read()</span><br><span class="line">bs &#x3D; BeautifulSoup(网页类型,&quot;编译器&quot;)</span><br><span class="line">1. Tag 标签及其内容</span><br><span class="line">print(bs.想要的数据：例如&lt;title&gt;等标签)   打印出的是标签和内容</span><br><span class="line">print(bs.想要的数据：例如&lt;title&gt;等标签.string)  打印出的是标签里面的内容</span><br><span class="line">2.NavigableString</span><br><span class="line">print(bs.想要的数据：例如&lt;title&gt;等标签.attrs )  打印出的是标签里面所有的属性</span><br><span class="line">3. BeautifulSoup  表示整个文档</span><br><span class="line">print(bs.name)    打印出文档名字</span><br><span class="line">print(bs)     打印出整个文档内容</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#文档的遍历</span><br><span class="line">print(bs.head.contents)  打印出head里面的内容</span><br><span class="line">print(bs.head.contents[1])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#文档的搜索</span><br><span class="line">#(1)find_all</span><br><span class="line">#字符串过滤：会查找与字符串完全匹配的内容</span><br><span class="line">t_list &#x3D; bs.find_all(&quot;a&quot;)</span><br><span class="line">print(t_list)   查找所有a标签</span><br><span class="line"></span><br><span class="line">import re</span><br><span class="line">#正则表达式搜收：使用search()方法来匹配内容</span><br><span class="line">t_list&#x3D;bs.find_all(re.compile(&quot;a&quot;))</span><br><span class="line">print(t_list)</span><br><span class="line">打印含有a的内容</span><br><span class="line"></span><br><span class="line">#方法：传入一个函数方法，根据函数的要求来搜索</span><br><span class="line">def name_is_exists(tag):</span><br><span class="line">    return tag.has_attr(&quot;name&quot;)</span><br><span class="line">t_list &#x3D; bs.find_all(name_is_exists)</span><br><span class="line">print(t_list)</span><br><span class="line">打印属性中有name的内容</span><br><span class="line"></span><br><span class="line">#kwargs  参数</span><br><span class="line">t_list &#x3D; bs.find_all(id&#x3D;&quot;head&quot;)</span><br><span class="line">for item in t_list: #使输出的内容有序排序</span><br><span class="line">    print(item)</span><br><span class="line">    打印id&#x3D;head 包含的整块内容</span><br><span class="line"></span><br><span class="line">#text 参数</span><br><span class="line">t_list &#x3D; bs.find_all(text &#x3D;re.compile(&quot;\d&quot;)) #应用正则表达式来查找包含特定的文本内容（标签里的字符串）</span><br><span class="line"></span><br><span class="line">for item in t_list:</span><br><span class="line">    print(item)</span><br><span class="line"></span><br><span class="line">#limit 参数</span><br><span class="line">t_list &#x3D; bs.find_all(&quot;a&quot;,limit&#x3D;3)</span><br><span class="line"></span><br><span class="line">for item in t_list:</span><br><span class="line">    print(item)</span><br><span class="line">#limit 限制打印出的内容尾多少个</span><br><span class="line"></span><br><span class="line">#css选择器</span><br><span class="line">t_list &#x3D; bs.select(&#39;title&#39;)  #通过标签来查找</span><br><span class="line"></span><br><span class="line">t_list &#x3D; bs.select(&quot;.mnav&quot;)  #通过类名来查找</span><br><span class="line"></span><br><span class="line">t_list &#x3D; bs.select(&#39;#u1&#39;)   #通过id来查找</span><br><span class="line"></span><br><span class="line">t_list &#x3D; bs.select(&quot;a[class&#x3D;&#39;bri&#39;]&quot;)   #a表示标签 class是属性，通过属性查找</span><br><span class="line"></span><br><span class="line">t_list &#x3D; bs.select(&quot;head &gt; title&quot;)   #通过子标签查找</span><br><span class="line"></span><br><span class="line">for item in t_list:</span><br><span class="line">    print(item)</span><br></pre></td></tr></table></figure>
+
+<p>解析题目：</p>
+<p><a target="_blank" rel="noopener" href="http://47.98.234.232:28068/">http://47.98.234.232:28068</a></p>
+<p>这道题的源码中有三个函数及一个判断条件</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/5f8e2a93830626f3fbc73643d9899da.png"></p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/93a91d7499e4f41038b8bc13594bd27.png"></p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/b8ab5a846d643a7372e8600d621bf7c.png"></p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/fe2d4db7aeb9fa45299c58085b19e92.png"></p>
+<p>当$s.$r=&amp;h 时，返回$flag</p>
+<p>又因为rand(),属于系统的数，所以我们不需要计算</p>
+<p>$s.$r=&amp;h 意思即是 当输入的两个数相等时，才能返回flag</p>
+<p>又s是通过md5()加密后的值,因此我们要构造两个md5($s.$r)==md5($h)</p>
+<p>这道题考查我们的是哈希算法</p>
+<p>PHP在处理哈希字符串时，会利用”!=”或”==”来对哈希值进行比较，它把每一个以”0E”开头的哈希值都解释为0，所以如果两个不同的密码经过哈希以后，其哈希值都是以”0E”开头的，那么PHP将会认为他们相同，都是0。</p>
+<p>所以第一个空以0e开头，后面随意填，第二个空需要查看md5加密后以0e开头的原值即可绕过</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/95b2c050be224a6d5f12e04a4941c79.jpg"></p>
+<p><img src="C:\Users\ggken\Desktop\95b2c050be224a6d5f12e04a4941c79.jpg" alt="95b2c050be224a6d5f12e04a4941c79"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://ggken753.github.io/2020/10/28/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02/" data-id="ckgtj6eai0000hgv343w140hg" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-学习笔记1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/10/18/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/" class="article-date">
@@ -424,7 +491,11 @@
       <ul>
         
           <li>
-            <a href="/2020/12/15/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B010/">(no title)</a>
+            <a href="/2020/12/23/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B011/">PHP小知识</a>
+          </li>
+        
+          <li>
+            <a href="/2020/12/18/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B010/">实战</a>
           </li>
         
           <li>
@@ -437,10 +508,6 @@
         
           <li>
             <a href="/2020/11/25/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B07/">MISC解题思路</a>
-          </li>
-        
-          <li>
-            <a href="/2020/11/19/%E6%B5%B7%E5%95%B8%E6%9D%AFwp/">海啸杯wp</a>
           </li>
         
       </ul>

