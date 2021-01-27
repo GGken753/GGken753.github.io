@@ -28,8 +28,6 @@
 <meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20210124152039711.png">
 <meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20210124152055539.png">
 <meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20210124152237867.png">
-<meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20210124155632641.png">
-<meta property="og:image" content="c:/Users/ggken/AppData/Roaming/Typora/typora-user-images/image-20210124155804436.png">
 <meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20210125033632084.png">
 <meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20210125033733698.png">
 <meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20210125033816334.png">
@@ -43,7 +41,7 @@
 <meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20210126214740642.png">
 <meta property="og:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20210126221612719.png">
 <meta property="article:published_time" content="2021-01-23T07:30:04.392Z">
-<meta property="article:modified_time" content="2021-01-27T05:57:02.094Z">
+<meta property="article:modified_time" content="2021-01-27T08:25:31.758Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://gitee.com/lin-ziyang/hexo/raw/master/image-20210124131835408.png">
@@ -210,27 +208,7 @@
 <p>4.重复上面的步骤，将常规SQL注入中的判断语句带入上面的URL：“javascript:alert(document.cookie=”id=”+escape(“xx and 1=1”));” “javascript:alert(document.cookie=”id=”+escape(“xx and 1=2”));”。和常规SQL注入一样，如果分别返回正常和不正常页面，则说明该应用存在注入漏洞，并可以进行cookie注入。</p>
 <p>5.使用常规注入语句进行注入即可。</p>
 <p>HTTP 请求的时候会带上客户端的 Cookie, 注入点存在 Cookie 当中的某个字段中。</p>
-<h4 id="三、实战"><a href="#三、实战" class="headerlink" title="三、实战"></a>三、实战</h4><p>问题URL：<a target="_blank" rel="noopener" href="http://minlue.com/product_list.asp?smallclass=148">http://minlue.com/product_list.asp?smallclass=148</a></p>
-<p>先直接访问URL，观察页面。</p>
-<p>去掉“smallclass=148”查看页面显示是否正常，如果不正常，说明参数在数据传递中是直接起作用的</p>
-<p>然后再清除地址,输入:</p>
-<p>javascript:alert(document.cookie=”smallclass=”+escape(“148”));</p>
-<p>会出现一个弹窗。</p>
-<p><img src="https://gitee.com/lin-ziyang/hexo/raw/master/image-20210124155632641.png"></p>
-<p>然后在去掉“?smallclass=xx” 浏览器中输入：<a target="_blank" rel="noopener" href="http://minlue.com/product_list.asp">http://minlue.com/product_list.asp</a></p>
-<p>页面刷新后网站显示正常</p>
-<p><img src="C:\Users\ggken\AppData\Roaming\Typora\typora-user-images\image-20210124155804436.png"></p>
-<p>通过分析上面的代码，我们确定了Cookie注入产生的原因。网站程序是通过request(“id”)方式获取客户端提交的数据，并且在防注入程序中没有对通过request.cookies方式提交的数据进行过滤。</p>
-<p>接下来：</p>
-<p>1、输入：javascript:alert(document.cookie=”smallclass=”+escape(“148 and 1=1”));</p>
-<p>弹窗，然后输入<a target="_blank" rel="noopener" href="http://minlue.com/product_list.asp%E9%A1%B5%E9%9D%A2%E6%AD%A3%E5%B8%B8%E3%80%82">http://minlue.com/product_list.asp页面正常。</a></p>
-<p>2、输入javascript:alert(document.cookie=”smallclass=”+escape(“148 and 1=2”));</p>
-<p>弹窗，再输入<a target="_blank" rel="noopener" href="http://minlue.com/product_list.asp%E9%A1%B5%E9%9D%A2%E4%B8%8D%E6%AD%A3%E5%B8%B8">http://minlue.com/product_list.asp页面不正常</a></p>
-<p>现在我们已经可以确定该网站存在注入漏洞，并且可以通过Cookie进行注入。</p>
-<p>然后换语句猜解字段数:</p>
-<p>javascript:alert(document.cookie=”smallclass=”+escape(“148 order by 12”));</p>
-<p>按照上面的规律，剩下的和常规SQL注入一样，如果分别返回正常和不正常页面，则说明该应用存在注入漏洞，并可以进行cookie注入。</p>
-<h2 id="或"><a href="#或" class="headerlink" title="或"></a>或</h2><p>1、首先找到传参地址：</p>
+<h4 id="三、"><a href="#三、" class="headerlink" title="三、"></a>三、</h4><h2 id=""><a href="#" class="headerlink" title=""></a></h2><p>1、首先找到传参地址：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">asp?id=xxx(例如：http://www.example.com/news.asp?id=1)</span><br></pre></td></tr></table></figure>
 
 <p>2、去掉参数，访问该url</p>
